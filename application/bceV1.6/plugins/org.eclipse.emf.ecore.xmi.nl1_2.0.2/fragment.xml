@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<fragment
+    name="EMF XMI NL Support"
+    id="org.eclipse.emf.ecore.xmi.nl1"
+    version="2.0.2"
+    plugin-id="org.eclipse.emf.ecore.xmi"
+    plugin-version="2.0.2"
+>
+</fragment>
