@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Generated-from: 1508768976887;type=4
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF XMI NL Support
+Bundle-SymbolicName: org.eclipse.emf.ecore.xmi.nl1
+Bundle-Version: 2.0.2
+Fragment-Host: org.eclipse.emf.ecore.xmi;bundle-version="[2.0.2,3.0.0)"
+Bundle-Localization: plugin

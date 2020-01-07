@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Generated-from: 1508768976989;type=4
+Bundle-ManifestVersion: 2
+Bundle-Name: EMF Edit NL Support
+Bundle-SymbolicName: org.eclipse.emf.edit.nl1
+Bundle-Version: 2.0.1
+Fragment-Host: org.eclipse.emf.edit;bundle-version="[2.0.1,3.0.0)"
+Bundle-Localization: plugin
