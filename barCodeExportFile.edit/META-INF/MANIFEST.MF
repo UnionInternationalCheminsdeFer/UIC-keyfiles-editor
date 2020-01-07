@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: barCodeExportFile.edit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: barCodeExportFile.edit
+Bundle-Activator: BarCodeKeyExchange.provider.BarCodeKeyExchangeEditPlugin$Implementation
+Bundle-Vendor: www.uic.org
+Bundle-Localization: plugin
+Export-Package: BarCodeKeyExchange.provider
+Require-Bundle: org.eclipse.core.runtime,
+  barCodeExportFile;visibility:=reexport,
+  org.eclipse.emf.edit;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
