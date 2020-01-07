@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+  <extension
+    point="org.eclipse.core.runtime.applications"
+    id="BarCodeKeyExchangeEditorApplication">
+    <application>
+      <run
+        class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$Application">
+      </run>
+    </application>
+  </extension>
+
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+
+      <perspective
+            class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$Perspective"
+            fixed="false"
+            icon="icons/bank.gif"
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorPerspective"
+            name="%UI_Bar_Code_Keys">
+      </perspective>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="BarCodeKeyExchange.file.actionset"
+            label="file.actionset">
+         <action
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
+               definitionId="epa.pflegeclient.file.new"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"
+               label="%UI_New_Keys_File"
+               menubarPath="file/additions">
+         </action>
+         <action
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$LoadAction"
+               definitionId="epa.pflegeclient.file.load"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorLoadAction"
+               label="%_UI_Download_UIC_Public_Key_File"
+               menubarPath="file/additions">
+         </action>
+      </actionSet>
+   </extension>   
+
+
+   
+
+   <extension
+         id="new file"
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeModelWizardID"
+            name="%_UI_BarCodeKeyExchangeModelWizard_label"
+            class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BarCodeKeyExchangeModelFile.gif">
+         <description>%_UI_BarCodeKeyExchangeModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+      <wizard
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeLoadUicWizardID"
+            name="%_UI_BarCodeKeyExchangeLoadUicWizard_label"
+            class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeLoadUicWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BarCodeKeyExchangeModelFile.gif">
+         <description>%_UI_BarCodeKeyExchangeLoadUicWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>      
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorID"
+            name="%_UI_BarCodeKeyExchangeEditor_label"
+            icon="icons/full/obj16/BarCodeKeyExchangeModelFile.gif"
+            extensions="xml"
+            class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditor"
+            contributorClass="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor">
+      </editor>
+   </extension>
+   
+
+   <extension
+         id="BCE"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="barCodeExportFile.editor.BarCodeKeyExchangeEditorApplication"
+            name="Bar Kode Key Editor">
+         <property
+               name="appName"
+               value="Bar Kode Key Editor">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/UIC GIF square_128.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="editor on UIC bar code key exchange files">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/UIC GIF square_16.gif,icons/UIC GIF square_32.gif,icons/UIC GIF square_48.gif,icons/UIC GIF square_64.gif,icons/UIC GIF square_128.gif">
+         </property>
+      </product>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.menus">
+	     <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+            <menu
+               id="org.eclipse.ui.main.menu.help"
+               label="%_UI_MENU_HELP">
+            	<command
+                  commandId="org.eclipse.ui.help.aboutAction"
+                  label="%_UI_About_Menu"
+                  style="push">
+            	</command>   
+            
+            	<command
+                  commandId="org.eclipse.ui.window.preferences"
+                  label="%_UI_MENU_PREFS"
+                  style="push">
+            	</command>       
+            	
+      			<command
+           			commandId="barcodeexchange.contents"      			
+            		style = "push"
+            		label = "%_UI_MENU_HELPd">
+      			</command>            	
+            	
+          </menu>
+      </menuContribution>   
+	</extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="BarCodeKeyExchange.application.HelpHandler"
+            id="barcodeexchange.contents"
+            name="%_UI_MENU_HELP"            >
+      </command>
+      <command
+            id="org.eclipse.ui.window.preferences"
+            name="%_UI_preferences">
+      </command>  
+	</extension>
+    
+   
+   
+   <extension point="org.eclipse.help.toc">
+      <toc  file="$nl$\toc.xml"
+            primary="true">
+      </toc>
+   	  <index
+         path="searchindex/">
+      </index>
+   </extension>
+
+   <extension point="org.eclipse.help.index">
+     	<index file="$nl$\index.xml"/>
+   </extension>
+   <extension point="org.eclipse.help.contexts">
+     	<contexts
+           file="$nl$\contexts.xml"
+           plugin="barCodeExportFile.editor">
+     	</contexts>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.menus">	
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+            
+	</menuContribution>         	
+   </extension>
+   
+   <extension
+         id="org.uic.barcodekeyeditor.prefs"
+         name="%_UI_PAGE_PREFS"    
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="BarCodeKeyExchange.preferences.PreferencePage"
+            id="org.uic.barcodekeyeditor.prefs"
+            name="%_UI_PAGE_PREFS">
+      </page>
+   </extension>
+   <extension
+         id="org.uic.barcodekeyeditor.prefs"
+         name="%UI_PAGE_PREFS"
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="BarCodeKeyExchange.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>   
+
+</plugin>

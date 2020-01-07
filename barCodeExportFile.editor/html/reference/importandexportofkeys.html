@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Adding public keys from a .pem file and saving public keys to a .pem file</title>
+</head>
+
+<body>
+<h1>Import and Export of Keys</h1>
+
+<p>The editor menu and context menu provide functions to import and export the content of keys. Keys can be 
+imported from and exported to .pem files either as certificates or as public keys.</p>
+
+<p>.pem is a simple file format to include public keys or certificates. The file starts with an text indicator e.g. "-----BEGINN CERTIFICATE" 
+followed by the base-64 encoded binary key or certificate. It ends with an end indicator i.e. ------END  OF CERTIFICATE.</p>
+
+<table>
+<tr><td>function</td><td>description</td></tr>
+<tr><td>add certificate from pem file </td><td>Add the certificate from a certificate pem formatted file.</td></tr>
+<tr><td>add public key from pem file </td><td>Add a public key from a pem formatted file. The pem file can be a public key pem file or a 
+		certificate pem file. </td></tr>
+<tr><td>save to pem file</td><td>Save the public key or certificate to a pem formatted file </td></tr>
+<tr><td>display public key content</td><td>displays the content of a public key or certificate </td></tr>
+</table>
+	<br/><br/>
+<ul>
+	<img src="../images/ContextMenu.jpg" alt="Context Menu"/>
+
+
+	<br/><br/>
+	<img src="../images/EditorMenu.jpg" alt="Editor Menu"/>
+</ul>
+
+</body>
+</html>

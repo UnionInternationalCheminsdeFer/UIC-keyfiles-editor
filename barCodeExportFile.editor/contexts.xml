@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="install">
+      <description>Installation</description>
+      <topic href="html/reference/administration/install.html" label="Installation"/>
+   </context>
+
+</contexts>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Description of data elements</title>
+</head>
+
+<body>
+<h1>Description of data elements</h1>
+
+<p>The download file for keys contains a list of keys. Each key has the following attributes:  </p>
+
+<ul>
+<table border="1">
+<tr><td>Tag Name</td><td>Value</td></tr>
+<tr><td>issuerName</td><td>	Name of the company which deliver the key</td></tr>
+<tr><td>issuerCode</td><td>	Railways RICS code printed on the ticket. Code needs to be in the list
+<tr><td>versionType</td><td>Type of the bar code used<br/>
+<ul>
+ <li>UIC 918-2</li>
+ <li>UIC 918-3</li>
+ <li>UIC 918-2PDF417</li>
+ <li>NonUIC*</li>
+</ul><br/>
+(* bilateral bar code definition must start with “NonUIC”)</td></tr>
+<tr><td>barcodeVersion</td><td>	Subversion within the versionType 2,3   </td></tr>
+<tr><td>id</td><td>	ID of the key corresponding to the ID of signature used in the bar code</td></tr>
+<tr><td>signatureAlgorithm</td><td>Name of the algorithm used for the signature. The name also indicates whether the signature is included as standard asn.1 encoded structure or as two separate signature parameters: <br/>
+<ul>
+<li>SHA256-DSA2048-NoASN1 (signature is included in the bar code as 2 numbers without wrapping standard asn.1 structure)</li>
+<li>SHA224-DSA2048-NoASN1 (signature is included in the bar code as 2 numbers without wrapping standard asn.1 structure)</li>
+<li>SHA224-DSA2048-ASN1</li>
+<li>SHA160-DSA1024-ASN1</li>
+<li>SHA160-DSA512-ASN1</li>
+<li>SHA256withDSA(2048,256) (name depreciated)</li>
+<li>SHA224withDSA(2048,224) (name depreciated)</li>
+<li>SHA1withDSA(1024,160) (name depreciated)</li>
+<li>SHA1withDSA(512,160) (name depreciated)</li>
+<li>NonUIC</li>
+</ul>
+</td></tr>
+<tr><td>publicKeyType</td><td>Type of the public key data included:<br/>
+	<li>PUBLIC KEY</li>
+	<li>CERTIFICATE</li>
+</td></tr>
+<tr><td>publicKey</td><td>The public key base64 encoded either as the public key or included in a certificate</td></tr>
+<tr><td>startDate</td><td>Validity: start date on the train (IRT) or begin of validity of the ticket (NRT)</td></tr>
+<tr><td>endDate</td><td>Validity: end date on the train (IRT) or end of validity of the ticket (NRT)</td></tr>
+<tr><td>lastDayOfSale</td><td>	Last day where the key has been used to sign bar codes. This date can be used in ticket validation. </td></tr>
+<tr><td>barcodeXsd</td><td>	bar code description  - currently undefined</td></tr>
+<tr><td>allowedProductOwnerCodes</td><td>Code and Name of the railway companies which allow the key for be used for their products(trains) with the two following sub elements</td></tr>
+<tr><td>productOwnerCode</td><td>	Railways RICS code to control the ticket. Code needs to be in the list on the official RICS code list</td></tr>
+<tr><td>productOwnerName</td><td>	Railways name</td></tr>
+<tr><td>keyForged</td><td>	Boolean to indicate forgery</td></tr>
+<tr><td>commentForEncryptionType</td><td>Comment on the encryption method</td></tr>
+<tr><td>testbarcode</td><td>Image of A test bar code</td></tr>
+<tr><td>imagetype</td><td>Type of the image (png, jpg or bmp) of a test bar code</td></tr>
+<tr><td>imagedata</td><td>Base64 encoded image data of a test bar code</td></tr>
+</table>
+</ul>
+
+</body>
+</html>
