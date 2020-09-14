@@ -36,14 +36,14 @@
             label="file.actionset">
          <action
                class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
-               definitionId="epa.pflegeclient.file.new"
+               definitionId="file.new"
                id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"
                label="%UI_New_Keys_File"
                menubarPath="file/additions">
          </action>
          <action
                class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$LoadAction"
-               definitionId="epa.pflegeclient.file.load"
+               definitionId="file.load"
                id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorLoadAction"
                label="%_UI_Download_UIC_Public_Key_File"
                menubarPath="file/additions">
