@@ -10,11 +10,11 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 
-import barcode.barCodeData.SecurityUtils;
 
 import BarCodeKeyExchange.KeyType;
 import BarCodeKeyExchange.PublicKeyType;
 import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorPlugin;
+import BarCodeKeyExchange.utils.SecurityUtils;
 
 
 public class ExportToPemAction extends BaseSelectionListenerAction {
@@ -105,7 +105,7 @@ public class ExportToPemAction extends BaseSelectionListenerAction {
     	}
 		
 		try {
-				Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+				Shell shell = Display.getDefault().getActiveShell();
 	            FileDialog fd = new FileDialog(shell, SWT.SAVE);
 	            fd.setText(this.getText());
 	            String[] filterExt = {"*.pem" };

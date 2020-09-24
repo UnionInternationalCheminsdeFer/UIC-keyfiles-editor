@@ -100,14 +100,13 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 	 */
 	public static class Application implements IApplication {
 		
-		
-		public static final String ID_APPLICATION = "BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorApplication";
 		/**
 		 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public Object start(IApplicationContext context) throws Exception {
 			WorkbenchAdvisor workbenchAdvisor = new BarCodeKeyExchangeEditorAdvisor();
 			Display display = PlatformUI.createDisplay();
@@ -131,6 +130,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void stop() {
 			// Do nothing.
 		}
@@ -157,6 +157,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void createInitialLayout(IPageLayout layout) {
 			layout.setEditorAreaVisible(true);
 			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
@@ -216,14 +217,10 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 				pm.addToRoot(securityNode);
 			}
 			
-			//added preferences to for network connections to allow some EPA partners to bypass proxies		
+			//added preferences to for network connections to bypass proxies	
+			pm.remove( "org.eclipse.help.ui.browsersPreferencePage" );
+			pm.remove("org.eclipse.m2e.core.preferences.Maven2PreferencePage");
 			
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.equinox.security.ui.category");
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.ui.preferencePages.Editors");
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.ui.preferencePages.Perspectives");
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.ui.preferencePages.Workspace");
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.ui.preferencePages.Keys");
-			//pm.remove("org.eclipse.ui.preferencePages.Workbench/org.eclipse.ui.preferencePages.ContentTypes");
 		} // postWindowOpen()
 
 		
@@ -286,7 +283,6 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 			menuBar.add(createHelpMenu(window));					
 		}
 
-	
 		
 		/**
 		 * Creates the 'File' menu.
@@ -306,8 +302,8 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 				
 				public void run() {
 					BarCodeKeyExchangeModelWizard wizard = new BarCodeKeyExchangeModelWizard();
-					wizard.init(BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench(), StructuredSelection.EMPTY);
-					WizardDialog wizardDialog = new WizardDialog(BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getDisplay().getActiveShell(), wizard);
+					wizard.init(PlatformUI.getWorkbench(), StructuredSelection.EMPTY);
+					WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
 					wizardDialog.open();
 				}
 
@@ -317,13 +313,44 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 				
 				public void run() {
 					BarCodeKeyExchangeLoadUicWizard wizard = new BarCodeKeyExchangeLoadUicWizard();
-					wizard.init(BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench(), StructuredSelection.EMPTY);
-					WizardDialog wizardDialog = new WizardDialog(BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getDisplay().getActiveShell(), wizard);
+					wizard.init(PlatformUI.getWorkbench(), StructuredSelection.EMPTY);
+					WizardDialog wizardDialog = new WizardDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
 					wizardDialog.open();
 				}
 
 			});
 			
+			menu.add(new Separator());
+			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+			menu.add(new Separator());
+			addToMenuAndRegister(menu, ActionFactory.CLOSE.create(window));
+			addToMenuAndRegister(menu, ActionFactory.CLOSE_ALL.create(window));
+			menu.add(new Separator());
+			addToMenuAndRegister(menu, ActionFactory.SAVE.create(window));
+			addToMenuAndRegister(menu, ActionFactory.SAVE_AS.create(window));
+			addToMenuAndRegister(menu, ActionFactory.SAVE_ALL.create(window));
+			menu.add(new Separator());
+			addToMenuAndRegister(menu, ActionFactory.QUIT.create(window));
+			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_END));
+			return menu;
+		}		
+	
+		
+		/**
+		 * Creates the 'File' menu.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected IMenuManager createFileMenuGen(IWorkbenchWindow window) {
+			IMenuManager menu = new MenuManager(getString("_UI_Menu_File_label"),
+			IWorkbenchActionConstants.M_FILE);    
+			menu.add(new GroupMarker(IWorkbenchActionConstants.FILE_START));
+	
+			IMenuManager newMenu = new MenuManager(getString("_UI_Menu_New_label"), "new");
+			newMenu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+	
+			menu.add(newMenu);
 			menu.add(new Separator());
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			menu.add(new Separator());
@@ -376,19 +403,23 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * Creates the 'Window' menu.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
+		 * @generated NOT
 		 */
 		protected IMenuManager createWindowMenu(IWorkbenchWindow window) {
 			IMenuManager menu = new MenuManager(getString("_UI_Menu_Window_label"),
 			IWorkbenchActionConstants.M_WINDOW);
 	
 			addToMenuAndRegister(menu, ActionFactory.OPEN_NEW_WINDOW.create(window));
-			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+			addToMenuAndRegister(menu, ActionFactory.RESET_PERSPECTIVE.create(window));
+			addToMenuAndRegister(menu, ActionFactory.PREFERENCES.create(window));
+
 			menu.add(ContributionItemFactory.OPEN_WINDOWS.create(window));
+			
 	
 			return menu;
 		}
 	
+
 		/**
 		 * Creates the 'Help' menu.
 		 * <!-- begin-user-doc -->
@@ -398,9 +429,8 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		protected IMenuManager createHelpMenu(IWorkbenchWindow window) {
 			IMenuManager menu = new MenuManager(getString("_UI_Menu_Help_label"), IWorkbenchActionConstants.M_HELP);
 			// Welcome or intro page would go here
+			
 			// Help contents would go here
-			// Tips and tricks page would go here
-			menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_START));
 			menu.add(new Action(){
 
 				@Override
@@ -427,8 +457,6 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 				@Override
 				public void run() {
 					
-					
-					
 					IWorkbenchWindow win = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 					
 					if (win == null) {
@@ -449,11 +477,14 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 					win.getWorkbench().getHelpSystem().displayHelp();	
 				}
 
-
-				
-			});
+			});			
+			
+			// Tips and tricks page would go here
+			menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_START));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.HELP_END));
+			addToMenuAndRegister(menu, ActionFactory.ABOUT.create(window));			
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+			
 			return menu;
 		}
 		
@@ -498,6 +529,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void run(IAction action) {
 			MessageDialog.openInformation(getWindow().getShell(), getString("_UI_About_title"),
 			getString("_UI_About_text"));
@@ -517,6 +549,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void run(IAction action) {
 			String[] filePaths = openFilePathDialog(getWindow().getShell(), SWT.OPEN, null);
 			if (filePaths.length > 0) {
@@ -538,6 +571,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void run(IAction action) {
 			LoadResourceAction.LoadResourceDialog loadResourceDialog = new LoadResourceAction.LoadResourceDialog(getWindow().getShell());
 			if (Window.OK == loadResourceDialog.open()) {

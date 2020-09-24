@@ -129,10 +129,6 @@ public enum KeyForgedType implements Enumerator {
 	/**
 	 * The '<em><b></b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b></b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_
 	 * @model literal=""
@@ -168,6 +164,8 @@ public enum KeyForgedType implements Enumerator {
 	 * Returns the '<em><b>Key Forged Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static KeyForgedType get(String literal) {
@@ -184,6 +182,8 @@ public enum KeyForgedType implements Enumerator {
 	 * Returns the '<em><b>Key Forged Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static KeyForgedType getByName(String name) {
@@ -200,6 +200,8 @@ public enum KeyForgedType implements Enumerator {
 	 * Returns the '<em><b>Key Forged Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static KeyForgedType get(int value) {
@@ -251,6 +253,7 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -260,6 +263,7 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -269,6 +273,7 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

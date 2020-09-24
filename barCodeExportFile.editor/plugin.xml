@@ -8,7 +8,7 @@
 
   <extension
     point="org.eclipse.core.runtime.applications"
-    id="BarCodeKeyExchangeEditorApplication">
+    id="BarCodeKeyExchangeEditorAdvisorApplication">
     <application>
       <run
         class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$Application">
@@ -36,14 +36,14 @@
             label="file.actionset">
          <action
                class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
-               definitionId="epa.pflegeclient.file.new"
+               definitionId="file.new"
                id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"
                label="%UI_New_Keys_File"
                menubarPath="file/additions">
          </action>
          <action
                class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$LoadAction"
-               definitionId="epa.pflegeclient.file.load"
+               definitionId="file.load"
                id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorLoadAction"
                label="%_UI_Download_UIC_Public_Key_File"
                menubarPath="file/additions">
@@ -96,7 +96,7 @@
          id="BCE"
          point="org.eclipse.core.runtime.products">
       <product
-            application="barCodeExportFile.editor.BarCodeKeyExchangeEditorApplication"
+            application="barCodeExportFile.editor.BarCodeKeyExchangeEditorAdvisorApplication"
             name="Bar Kode Key Editor">
          <property
                name="appName"
@@ -117,50 +117,6 @@
       </product>
    </extension>
 
-
-   <extension
-         point="org.eclipse.ui.menus">
-	     <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu">
-            <menu
-               id="org.eclipse.ui.main.menu.help"
-               label="%_UI_MENU_HELP">
-            	<command
-                  commandId="org.eclipse.ui.help.aboutAction"
-                  label="%_UI_About_Menu"
-                  style="push">
-            	</command>   
-            
-            	<command
-                  commandId="org.eclipse.ui.window.preferences"
-                  label="%_UI_MENU_PREFS"
-                  style="push">
-            	</command>       
-            	
-      			<command
-           			commandId="barcodeexchange.contents"      			
-            		style = "push"
-            		label = "%_UI_MENU_HELPd">
-      			</command>            	
-            	
-          </menu>
-      </menuContribution>   
-	</extension>
-   
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="BarCodeKeyExchange.application.HelpHandler"
-            id="barcodeexchange.contents"
-            name="%_UI_MENU_HELP"            >
-      </command>
-      <command
-            id="org.eclipse.ui.window.preferences"
-            name="%_UI_preferences">
-      </command>  
-	</extension>
-    
-   
    
    <extension point="org.eclipse.help.toc">
       <toc  file="$nl$\toc.xml"

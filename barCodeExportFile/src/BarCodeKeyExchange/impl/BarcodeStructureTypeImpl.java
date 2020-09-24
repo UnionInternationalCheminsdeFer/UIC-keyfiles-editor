@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.impl.BarcodeStructureTypeImpl#getIssuerName <em>Issuer Name</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.BarcodeStructureTypeImpl#getIssuerCode <em>Issuer Code</em>}</li>
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link BarCodeKeyExchange.impl.BarcodeStructureTypeImpl#getBarcodeVersion <em>Barcode Version</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.BarcodeStructureTypeImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -202,6 +202,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIssuerName() {
 		return issuerName;
 	}
@@ -211,6 +212,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIssuerName(String newIssuerName) {
 		String oldIssuerName = issuerName;
 		issuerName = newIssuerName;
@@ -223,6 +225,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getIssuerCode() {
 		return issuerCode;
 	}
@@ -232,6 +235,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIssuerCode(int newIssuerCode) {
 		int oldIssuerCode = issuerCode;
 		issuerCode = newIssuerCode;
@@ -246,6 +250,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetIssuerCode() {
 		int oldIssuerCode = issuerCode;
 		boolean oldIssuerCodeESet = issuerCodeESet;
@@ -260,6 +265,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetIssuerCode() {
 		return issuerCodeESet;
 	}
@@ -269,6 +275,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersionType() {
 		return versionType;
 	}
@@ -278,6 +285,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersionType(String newVersionType) {
 		String oldVersionType = versionType;
 		versionType = newVersionType;
@@ -290,6 +298,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -299,6 +308,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(int newId) {
 		int oldId = id;
 		id = newId;
@@ -313,6 +323,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetId() {
 		int oldId = id;
 		boolean oldIdESet = idESet;
@@ -327,6 +338,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetId() {
 		return idESet;
 	}
@@ -336,6 +348,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getBarcodeVersion() {
 		return barcodeVersion;
 	}
@@ -345,6 +358,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBarcodeVersion(int newBarcodeVersion) {
 		int oldBarcodeVersion = barcodeVersion;
 		barcodeVersion = newBarcodeVersion;
@@ -359,6 +373,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetBarcodeVersion() {
 		int oldBarcodeVersion = barcodeVersion;
 		boolean oldBarcodeVersionESet = barcodeVersionESet;
@@ -373,6 +388,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetBarcodeVersion() {
 		return barcodeVersionESet;
 	}
@@ -382,6 +398,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -391,6 +408,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -515,7 +533,7 @@ public class BarcodeStructureTypeImpl extends EObjectImpl implements BarcodeStru
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (issuerName: ");
 		result.append(issuerName);
 		result.append(", issuerCode: ");

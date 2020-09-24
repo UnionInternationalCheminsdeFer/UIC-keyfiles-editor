@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.AllowedProductOwnerCodesType#getProductOwnerCode <em>Product Owner Code</em>}</li>
  *   <li>{@link BarCodeKeyExchange.AllowedProductOwnerCodesType#getProductOwnerName <em>Product Owner Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getAllowedProductOwnerCodesType()
  * @model extendedMetaData="name='allowedProductOwnerCodes_._type' kind='elementOnly'"

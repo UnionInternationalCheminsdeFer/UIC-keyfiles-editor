@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.PublicKeyType#getValue <em>Value</em>}</li>
  *   <li>{@link BarCodeKeyExchange.PublicKeyType#getKeytype <em>Keytype</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getPublicKeyType()
  * @model extendedMetaData="name='publicKeyType' kind='simple'"

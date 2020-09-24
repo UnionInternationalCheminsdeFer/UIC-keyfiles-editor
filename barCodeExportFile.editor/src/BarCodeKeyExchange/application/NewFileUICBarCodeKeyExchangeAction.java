@@ -35,7 +35,6 @@ import java.io.FileWriter;
  */
 public class NewFileUICBarCodeKeyExchangeAction extends BaseSelectionListenerAction {
 	
-	private String urlKeysDefault = "https://railpublickey.uic.org/download.php";
 
 	public NewFileUICBarCodeKeyExchangeAction(String text)
 	{
@@ -108,7 +107,7 @@ public class NewFileUICBarCodeKeyExchangeAction extends BaseSelectionListenerAct
 
 	
 	private String getFile() {
-		Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+		Shell shell = Display.getDefault().getActiveShell();
 	    FileDialog dialog = new FileDialog(shell, SWT.SAVE);
 	    dialog.setText(LocalLanguageSupport._Generic_LocalFileSelect);
 	    dialog.setFilterExtensions(new String[] {"*.xml"}); 
@@ -159,6 +158,7 @@ public class NewFileUICBarCodeKeyExchangeAction extends BaseSelectionListenerAct
 			
 			fw.flush();
 			
+			fw.close();
 
 			IWorkbench workbench = PlatformUI.getWorkbench();
 							

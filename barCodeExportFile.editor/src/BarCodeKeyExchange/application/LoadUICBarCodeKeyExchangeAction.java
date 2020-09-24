@@ -119,7 +119,7 @@ public class LoadUICBarCodeKeyExchangeAction extends BaseSelectionListenerAction
 
 	
 	private String getFile() {
-		Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+		Shell shell = Display.getDefault().getActiveShell();
 	    FileDialog dialog = new FileDialog(shell, SWT.SAVE);
 	    dialog.setText(LocalLanguageSupport._Generic_LocalFileSelect);
 	    dialog.setFilterExtensions(new String[] {"*.xml"}); 

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -143,7 +144,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link BarCodeKeyExchangePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -157,11 +158,13 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		if (isInited) return (BarCodeKeyExchangePackage)EPackage.Registry.INSTANCE.getEPackage(BarCodeKeyExchangePackage.eNS_URI);
 
 		// Obtain or create and register package
-		BarCodeKeyExchangePackageImpl theBarCodeKeyExchangePackage = (BarCodeKeyExchangePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof BarCodeKeyExchangePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new BarCodeKeyExchangePackageImpl());
+		Object registeredBarCodeKeyExchangePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		BarCodeKeyExchangePackageImpl theBarCodeKeyExchangePackage = registeredBarCodeKeyExchangePackage instanceof BarCodeKeyExchangePackageImpl ? (BarCodeKeyExchangePackageImpl)registeredBarCodeKeyExchangePackage : new BarCodeKeyExchangePackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -172,7 +175,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 
 		// Register package validator
 		EValidator.Registry.INSTANCE.put
-			(theBarCodeKeyExchangePackage, 
+			(theBarCodeKeyExchangePackage,
 			 new EValidator.Descriptor() {
 				 public EValidator getEValidator() {
 					 return BarCodeKeyExchangeValidator.INSTANCE;
@@ -182,7 +185,6 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		// Mark meta-data to indicate it can't be changed
 		theBarCodeKeyExchangePackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(BarCodeKeyExchangePackage.eNS_URI, theBarCodeKeyExchangePackage);
 		return theBarCodeKeyExchangePackage;
@@ -193,6 +195,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAllowedProductOwnerCodesType() {
 		return allowedProductOwnerCodesTypeEClass;
 	}
@@ -202,6 +205,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAllowedProductOwnerCodesType_ProductOwnerCode() {
 		return (EAttribute)allowedProductOwnerCodesTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -211,6 +215,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAllowedProductOwnerCodesType_ProductOwnerName() {
 		return (EAttribute)allowedProductOwnerCodesTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -220,6 +225,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBarcodeStructureType() {
 		return barcodeStructureTypeEClass;
 	}
@@ -229,6 +235,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_IssuerName() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -238,6 +245,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_IssuerCode() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -247,6 +255,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_VersionType() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -256,6 +265,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_Id() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(3);
 	}
@@ -265,6 +275,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_BarcodeVersion() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(4);
 	}
@@ -274,6 +285,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBarcodeStructureType_Description() {
 		return (EAttribute)barcodeStructureTypeEClass.getEStructuralFeatures().get(5);
 	}
@@ -283,6 +295,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDocumentRoot() {
 		return documentRootEClass;
 	}
@@ -292,6 +305,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDocumentRoot_Mixed() {
 		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(0);
 	}
@@ -301,6 +315,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_XMLNSPrefixMap() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(1);
 	}
@@ -310,6 +325,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_XSISchemaLocation() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(2);
 	}
@@ -319,6 +335,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_Keys() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(3);
 	}
@@ -328,6 +345,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getKeysType() {
 		return keysTypeEClass;
 	}
@@ -337,6 +355,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getKeysType_Key() {
 		return (EReference)keysTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -346,6 +365,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getKeysType_BarcodeStructure() {
 		return (EReference)keysTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -355,6 +375,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getKeyType() {
 		return keyTypeEClass;
 	}
@@ -364,6 +385,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_IssuerName() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -373,6 +395,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_IssuerCode() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -382,6 +405,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_VersionType() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -391,6 +415,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_SignatureAlgorithm() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(3);
 	}
@@ -400,7 +425,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getKeyType_Id() {
+	@Override
+	public EAttribute getKeyType_SignatureAlgorithmOid() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -409,8 +435,19 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getKeyType_Id() {
+		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getKeyType_PublicKey() {
-		return (EReference)keyTypeEClass.getEStructuralFeatures().get(5);
+		return (EReference)keyTypeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -418,16 +455,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_BarcodeVersion() {
-		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getKeyType_StartDate() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -436,7 +465,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getKeyType_EndDate() {
+	@Override
+	public EAttribute getKeyType_StartDate() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -445,7 +475,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getKeyType_BarcodeXsd() {
+	@Override
+	public EAttribute getKeyType_EndDate() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -454,8 +485,19 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getKeyType_BarcodeXsd() {
+		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getKeyType_AllowedProductOwnerCodes() {
-		return (EReference)keyTypeEClass.getEStructuralFeatures().get(10);
+		return (EReference)keyTypeEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -463,16 +505,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getKeyType_LastDayOfSale() {
-		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getKeyType_KeyForged() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -481,7 +515,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getKeyType_CommentForEncryptionType() {
+	@Override
+	public EAttribute getKeyType_KeyForged() {
 		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -490,8 +525,9 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getKeyType_Testbarcode() {
-		return (EReference)keyTypeEClass.getEStructuralFeatures().get(14);
+	@Override
+	public EAttribute getKeyType_CommentForEncryptionType() {
+		return (EAttribute)keyTypeEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -499,6 +535,17 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getKeyType_Testbarcode() {
+		return (EReference)keyTypeEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPublicKeyType() {
 		return publicKeyTypeEClass;
 	}
@@ -508,6 +555,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublicKeyType_Value() {
 		return (EAttribute)publicKeyTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -517,6 +565,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPublicKeyType_Keytype() {
 		return (EAttribute)publicKeyTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -526,6 +575,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTestbarcodeType() {
 		return testbarcodeTypeEClass;
 	}
@@ -535,6 +585,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTestbarcodeType_Imagetype() {
 		return (EAttribute)testbarcodeTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -544,6 +595,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTestbarcodeType_Imagedata() {
 		return (EAttribute)testbarcodeTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -553,6 +605,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getImagetypeType() {
 		return imagetypeTypeEEnum;
 	}
@@ -562,6 +615,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getKeyForgedType() {
 		return keyForgedTypeEEnum;
 	}
@@ -571,6 +625,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getImagetypeTypeObject() {
 		return imagetypeTypeObjectEDataType;
 	}
@@ -580,6 +635,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getKeyForgedTypeObject() {
 		return keyForgedTypeObjectEDataType;
 	}
@@ -589,6 +645,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BarCodeKeyExchangeFactory getBarCodeKeyExchangeFactory() {
 		return (BarCodeKeyExchangeFactory)getEFactoryInstance();
 	}
@@ -639,6 +696,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		createEAttribute(keyTypeEClass, KEY_TYPE__ISSUER_CODE);
 		createEAttribute(keyTypeEClass, KEY_TYPE__VERSION_TYPE);
 		createEAttribute(keyTypeEClass, KEY_TYPE__SIGNATURE_ALGORITHM);
+		createEAttribute(keyTypeEClass, KEY_TYPE__SIGNATURE_ALGORITHM_OID);
 		createEAttribute(keyTypeEClass, KEY_TYPE__ID);
 		createEReference(keyTypeEClass, KEY_TYPE__PUBLIC_KEY);
 		createEAttribute(keyTypeEClass, KEY_TYPE__BARCODE_VERSION);
@@ -700,7 +758,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 
 		// Add supertypes to classes
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(allowedProductOwnerCodesTypeEClass, AllowedProductOwnerCodesType.class, "AllowedProductOwnerCodesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAllowedProductOwnerCodesType_ProductOwnerCode(), theXMLTypePackage.getNonNegativeInteger(), "productOwnerCode", null, 0, -1, AllowedProductOwnerCodesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAllowedProductOwnerCodesType_ProductOwnerName(), theXMLTypePackage.getString(), "productOwnerName", null, 0, -1, AllowedProductOwnerCodesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -728,6 +786,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		initEAttribute(getKeyType_IssuerCode(), theXMLTypePackage.getInt(), "issuerCode", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_VersionType(), theXMLTypePackage.getString(), "versionType", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_SignatureAlgorithm(), theXMLTypePackage.getString(), "signatureAlgorithm", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyType_SignatureAlgorithmOid(), theXMLTypePackage.getString(), "signatureAlgorithmOid", null, 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_Id(), theXMLTypePackage.getInt(), "id", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKeyType_PublicKey(), this.getPublicKeyType(), null, "publicKey", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_BarcodeVersion(), theXMLTypePackage.getInt(), "barcodeVersion", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -782,347 +841,355 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "qualified", "false"
-		   });		
+			   "qualified", "false"
+		   });
 		addAnnotation
-		  (allowedProductOwnerCodesTypeEClass, 
-		   source, 
+		  (allowedProductOwnerCodesTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "allowedProductOwnerCodes_._type",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "allowedProductOwnerCodes_._type",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getAllowedProductOwnerCodesType_ProductOwnerCode(), 
-		   source, 
+		  (getAllowedProductOwnerCodesType_ProductOwnerCode(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "productOwnerCode",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "productOwnerCode",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getAllowedProductOwnerCodesType_ProductOwnerName(), 
-		   source, 
+		  (getAllowedProductOwnerCodesType_ProductOwnerName(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "productOwnerName",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "productOwnerName",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (barcodeStructureTypeEClass, 
-		   source, 
+		  (barcodeStructureTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "BarcodeStructureType",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "BarcodeStructureType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_IssuerName(), 
-		   source, 
+		  (getBarcodeStructureType_IssuerName(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "issuerName",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "issuerName",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_IssuerCode(), 
-		   source, 
+		  (getBarcodeStructureType_IssuerCode(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "issuerCode",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "issuerCode",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_VersionType(), 
-		   source, 
+		  (getBarcodeStructureType_VersionType(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "versionType",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "versionType",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_Id(), 
-		   source, 
+		  (getBarcodeStructureType_Id(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "id",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "id",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_BarcodeVersion(), 
-		   source, 
+		  (getBarcodeStructureType_BarcodeVersion(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "barcodeVersion",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "barcodeVersion",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getBarcodeStructureType_Description(), 
-		   source, 
+		  (getBarcodeStructureType_Description(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "description",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "description",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (documentRootEClass, 
-		   source, 
+		  (documentRootEClass,
+		   source,
 		   new String[] {
-			 "name", "",
-			 "kind", "mixed"
-		   });		
+			   "name", "",
+			   "kind", "mixed"
+		   });
 		addAnnotation
-		  (getDocumentRoot_Mixed(), 
-		   source, 
+		  (getDocumentRoot_Mixed(),
+		   source,
 		   new String[] {
-			 "kind", "elementWildcard",
-			 "name", ":mixed"
-		   });		
+			   "kind", "elementWildcard",
+			   "name", ":mixed"
+		   });
 		addAnnotation
-		  (getDocumentRoot_XMLNSPrefixMap(), 
-		   source, 
+		  (getDocumentRoot_XMLNSPrefixMap(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "xmlns:prefix"
-		   });		
+			   "kind", "attribute",
+			   "name", "xmlns:prefix"
+		   });
 		addAnnotation
-		  (getDocumentRoot_XSISchemaLocation(), 
-		   source, 
+		  (getDocumentRoot_XSISchemaLocation(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "xsi:schemaLocation"
-		   });		
+			   "kind", "attribute",
+			   "name", "xsi:schemaLocation"
+		   });
 		addAnnotation
-		  (getDocumentRoot_Keys(), 
-		   source, 
+		  (getDocumentRoot_Keys(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "keys",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "keys",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (imagetypeTypeEEnum, 
-		   source, 
+		  (imagetypeTypeEEnum,
+		   source,
 		   new String[] {
-			 "name", "imagetype_._type"
-		   });		
+			   "name", "imagetype_._type"
+		   });
 		addAnnotation
-		  (imagetypeTypeObjectEDataType, 
-		   source, 
+		  (imagetypeTypeObjectEDataType,
+		   source,
 		   new String[] {
-			 "name", "imagetype_._type:Object",
-			 "baseType", "imagetype_._type"
-		   });		
+			   "name", "imagetype_._type:Object",
+			   "baseType", "imagetype_._type"
+		   });
 		addAnnotation
-		  (keyForgedTypeEEnum, 
-		   source, 
+		  (keyForgedTypeEEnum,
+		   source,
 		   new String[] {
-			 "name", "keyForged_._type"
-		   });		
+			   "name", "keyForged_._type"
+		   });
 		addAnnotation
-		  (keyForgedTypeObjectEDataType, 
-		   source, 
+		  (keyForgedTypeObjectEDataType,
+		   source,
 		   new String[] {
-			 "name", "keyForged_._type:Object",
-			 "baseType", "keyForged_._type"
-		   });		
+			   "name", "keyForged_._type:Object",
+			   "baseType", "keyForged_._type"
+		   });
 		addAnnotation
-		  (keysTypeEClass, 
-		   source, 
+		  (keysTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "keys_._type",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "keys_._type",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getKeysType_Key(), 
-		   source, 
+		  (getKeysType_Key(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "key",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "key",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeysType_BarcodeStructure(), 
-		   source, 
+		  (getKeysType_BarcodeStructure(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "barcodeStructure",
-			 "namespace", "##targetNamespace"
-		   });			
+			   "kind", "element",
+			   "name", "barcodeStructure",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (keyTypeEClass, 
-		   source, 
+		  (keyTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "KeyType",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "KeyType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getKeyType_IssuerName(), 
-		   source, 
+		  (getKeyType_IssuerName(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "issuerName",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "issuerName",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_IssuerCode(), 
-		   source, 
+		  (getKeyType_IssuerCode(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "issuerCode",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "issuerCode",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_VersionType(), 
-		   source, 
+		  (getKeyType_VersionType(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "versionType",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "versionType",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_SignatureAlgorithm(), 
-		   source, 
+		  (getKeyType_SignatureAlgorithm(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "signatureAlgorithm",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "signatureAlgorithm",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_Id(), 
-		   source, 
+		  (getKeyType_SignatureAlgorithmOid(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "id",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "signatureAlgorithmOid",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_PublicKey(), 
-		   source, 
+		  (getKeyType_Id(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "publicKey",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "id",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_BarcodeVersion(), 
-		   source, 
+		  (getKeyType_PublicKey(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "barcodeVersion",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "publicKey",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_StartDate(), 
-		   source, 
+		  (getKeyType_BarcodeVersion(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "startDate",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "barcodeVersion",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_EndDate(), 
-		   source, 
+		  (getKeyType_StartDate(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "endDate",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "startDate",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_BarcodeXsd(), 
-		   source, 
+		  (getKeyType_EndDate(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "barcodeXsd",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "endDate",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_AllowedProductOwnerCodes(), 
-		   source, 
+		  (getKeyType_BarcodeXsd(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "allowedProductOwnerCodes",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "barcodeXsd",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_LastDayOfSale(), 
-		   source, 
+		  (getKeyType_AllowedProductOwnerCodes(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "lastDayOfSale",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "allowedProductOwnerCodes",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_KeyForged(), 
-		   source, 
+		  (getKeyType_LastDayOfSale(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "keyForged",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "lastDayOfSale",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_CommentForEncryptionType(), 
-		   source, 
+		  (getKeyType_KeyForged(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "commentForEncryptionType",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "keyForged",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getKeyType_Testbarcode(), 
-		   source, 
+		  (getKeyType_CommentForEncryptionType(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "testbarcode",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "commentForEncryptionType",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (publicKeyTypeEClass, 
-		   source, 
+		  (getKeyType_Testbarcode(),
+		   source,
 		   new String[] {
-			 "name", "publicKeyType",
-			 "kind", "simple"
-		   });		
+			   "kind", "element",
+			   "name", "testbarcode",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getPublicKeyType_Value(), 
-		   source, 
+		  (publicKeyTypeEClass,
+		   source,
 		   new String[] {
-			 "name", ":0",
-			 "kind", "simple"
-		   });		
+			   "name", "publicKeyType",
+			   "kind", "simple"
+		   });
 		addAnnotation
-		  (getPublicKeyType_Keytype(), 
-		   source, 
+		  (getPublicKeyType_Value(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "keytype",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "name", ":0",
+			   "kind", "simple"
+		   });
 		addAnnotation
-		  (testbarcodeTypeEClass, 
-		   source, 
+		  (getPublicKeyType_Keytype(),
+		   source,
 		   new String[] {
-			 "name", "testbarcode_._type",
-			 "kind", "elementOnly"
-		   });		
+			   "kind", "attribute",
+			   "name", "keytype",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getTestbarcodeType_Imagetype(), 
-		   source, 
+		  (testbarcodeTypeEClass,
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "imagetype",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "name", "testbarcode_._type",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getTestbarcodeType_Imagedata(), 
-		   source, 
+		  (getTestbarcodeType_Imagetype(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "imagedata",
-			 "namespace", "##targetNamespace"
+			   "kind", "element",
+			   "name", "imagetype",
+			   "namespace", "##targetNamespace"
+		   });
+		addAnnotation
+		  (getTestbarcodeType_Imagedata(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "imagedata",
+			   "namespace", "##targetNamespace"
 		   });
 	}
 
@@ -1133,13 +1200,13 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";																									
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
-		  (keyTypeEClass, 
-		   source, 
+		  (keyTypeEClass,
+		   source,
 		   new String[] {
-			 "constraints", "ValidKeyType"
-		   });																						
+			   "constraints", "ValidKeyType"
+		   });
 	}
 
 } //BarCodeKeyExchangePackageImpl

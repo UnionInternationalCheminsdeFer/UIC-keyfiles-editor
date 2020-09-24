@@ -17,7 +17,6 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
@@ -70,7 +69,6 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
-		supportedTypes.add(IItemFontProvider.class);
 	}
 
 	/**
@@ -240,6 +238,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -250,6 +249,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -298,6 +298,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -308,6 +309,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -318,6 +320,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -332,6 +335,7 @@ public class BarCodeKeyExchangeItemProviderAdapterFactory extends BarCodeKeyExch
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (allowedProductOwnerCodesTypeItemProvider != null) allowedProductOwnerCodesTypeItemProvider.dispose();
 		if (barcodeStructureTypeItemProvider != null) barcodeStructureTypeItemProvider.dispose();

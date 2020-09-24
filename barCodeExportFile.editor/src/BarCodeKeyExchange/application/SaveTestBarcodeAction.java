@@ -115,7 +115,7 @@ public class SaveTestBarcodeAction extends BaseSelectionListenerAction {
 	    		        + "_" + key.getBarcodeVersion() 
 	    		        + "_" + key.getStartDate().toString();	    
 	    
-		Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+		Shell shell = Display.getDefault().getActiveShell();
 	    FileDialog dialog = new FileDialog(shell, SWT.SAVE);
 	    dialog.setText(LocalLanguageSupport._Action_SaveTestBarcodeFileName);
 	    dialog.setFilterExtensions(new String[] { "*."+suffix, "*.*" }); 

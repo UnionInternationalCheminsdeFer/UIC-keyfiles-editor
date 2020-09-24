@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.KeysType#getKey <em>Key</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeysType#getBarcodeStructure <em>Barcode Structure</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeysType()
  * @model extendedMetaData="name='keys_._type' kind='elementOnly'"

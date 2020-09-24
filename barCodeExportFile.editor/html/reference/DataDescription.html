@@ -33,22 +33,26 @@
 <li>SHA224-DSA2048-ASN1</li>
 <li>SHA160-DSA1024-ASN1</li>
 <li>SHA160-DSA512-ASN1</li>
-<li>SHA256withDSA(2048,256) (name depreciated)</li>
-<li>SHA224withDSA(2048,224) (name depreciated)</li>
-<li>SHA1withDSA(1024,160) (name depreciated)</li>
-<li>SHA1withDSA(512,160) (name depreciated)</li>
+<li>SHA256withDSA(2048,256)</li>
+<li>SHA224withDSA(2048,224)</li>
+<li>SHA1withDSA(1024,160)</li>
+<li>SHA1withDSA(512,160)</li>
+<li>SHA256withECDSA-P256 (elliptic curve signature)</li>
 <li>NonUIC</li>
 </ul>
 </td></tr>
 <tr><td>publicKeyType</td><td>Type of the public key data included:<br/>
+    <br/>It is recommended to use certificates only.<br/><br/>
+    <ul>
 	<li>PUBLIC KEY</li>
 	<li>CERTIFICATE</li>
+	</ul> 
 </td></tr>
 <tr><td>publicKey</td><td>The public key base64 encoded either as the public key or included in a certificate</td></tr>
 <tr><td>startDate</td><td>Validity: start date on the train (IRT) or begin of validity of the ticket (NRT)</td></tr>
 <tr><td>endDate</td><td>Validity: end date on the train (IRT) or end of validity of the ticket (NRT)</td></tr>
 <tr><td>lastDayOfSale</td><td>	Last day where the key has been used to sign bar codes. This date can be used in ticket validation. </td></tr>
-<tr><td>barcodeXsd</td><td>	bar code description  - currently undefined</td></tr>
+<tr><td>barcodeXsd</td><td>	bar code description  (deprecated)</td></tr>
 <tr><td>allowedProductOwnerCodes</td><td>Code and Name of the railway companies which allow the key for be used for their products(trains) with the two following sub elements</td></tr>
 <tr><td>productOwnerCode</td><td>	Railways RICS code to control the ticket. Code needs to be in the list on the official RICS code list</td></tr>
 <tr><td>productOwnerName</td><td>	Railways name</td></tr>

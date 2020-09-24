@@ -133,6 +133,8 @@ public class BarCodeKeyExchangeModelWizard extends Wizard implements INewWizard 
 			
 			fw.flush();
 			
+			fw.close();
+			
 			return BarCodeKeyExchangeEditorAdvisor.openEditor(workbench, fileURI);			
 		}
 		catch (Exception exception) {

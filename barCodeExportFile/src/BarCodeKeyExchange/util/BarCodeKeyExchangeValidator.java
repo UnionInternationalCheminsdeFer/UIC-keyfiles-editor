@@ -3,18 +3,21 @@
 package BarCodeKeyExchange.util;
 
 import BarCodeKeyExchange.*;
+import BarCodeKeyExchange.utils.SecurityUtils;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import barcode.barCodeData.DateUtils;
-import barcode.barCodeData.SecurityUtils;
 
 import org.eclipse.emf.ecore.EPackage;
 
@@ -204,11 +207,11 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 			
 			if (fromDate != null && key.getStartDate() != null){
 				
-				Date date1 = DateUtils.removeTime(key.getStartDate().toGregorianCalendar().getTime());				
+				Date date1 = SecurityUtils.removeTime(key.getStartDate().toGregorianCalendar().getTime());				
 				Calendar cal1 = Calendar.getInstance();
 				cal1.setTime(date1);
 				
-				Date date2 = DateUtils.removeTime(fromDate);
+				Date date2 = SecurityUtils.removeTime(fromDate);
 				Calendar cal2 = Calendar.getInstance();
 				cal2.setTime(date2);
 
@@ -231,11 +234,11 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 			
 			if (untilDate != null){
 				
-				Date date1 = DateUtils.removeTime(key.getStartDate().toGregorianCalendar().getTime());				
+				Date date1 = SecurityUtils.removeTime(key.getStartDate().toGregorianCalendar().getTime());				
 				Calendar cal1 = Calendar.getInstance();
 				cal1.setTime(date1);
 				
-				Date date2 = DateUtils.removeTime(untilDate);
+				Date date2 = SecurityUtils.removeTime(untilDate);
 				Calendar cal2 = Calendar.getInstance();
 				cal2.setTime(date2);
 
@@ -267,7 +270,8 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 			!key.getSignatureAlgorithm().equals("SHA256-DSA2048-NoASN1")   &&			
 			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-ASN1")     && 
 			!key.getSignatureAlgorithm().equals("SHA160-DSA1024-ASN1")     &&
-			!key.getSignatureAlgorithm().equals("SHA160-DSA512-ASN1")    			
+			!key.getSignatureAlgorithm().equals("SHA160-DSA512-ASN1")      &&
+			!key.getSignatureAlgorithm().equals("SHA256withECDSA-P256")    
 	        )     {
 			
 			if (diagnostics != null) {
@@ -297,6 +301,7 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-ASN1")     && 
 			!key.getSignatureAlgorithm().equals("SHA160-DSA1024-ASN1")     &&
 			!key.getSignatureAlgorithm().equals("SHA160-DSA512-ASN1")      &&
+			!key.getSignatureAlgorithm().equals("SHA256withECDSA-P256")    &&
 			!key.getSignatureAlgorithm().startsWith("NonUIC")       
 		     )     {
 				
@@ -338,6 +343,112 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 		return result;
 	}
 	
+	/**
+	 * Validates the ValidOidFormat constraint of '<em>Key Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateKeyType_ValidOidFormat(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+		
+		if (key.getSignatureAlgorithmOid() == null) {
+			//warning
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.WARNING,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "Signature Algorithm OID is missing: ", getName(key)},
+						 new Object[] { key },
+						 context));
+			}
+		}
+
+		
+		Pattern pattern = Pattern.compile("^([0-2])((\\.0)|(\\.[1-9][0-9]*))*$");
+
+		Matcher matcher = pattern.matcher(key.getSignatureAlgorithmOid());	
+		
+		if (!matcher.matches()) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "Signature Algorithm OID has wrong format: ", getName(key)},
+						 new Object[] { key },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the ListeOIDCheck constraint of '<em>Key Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateKeyType_ListeOIDCheck(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+        if (key.getSignatureAlgorithmOid() == null) return true;
+        
+        
+        Set<String>  algorithmOids = new HashSet<String>();
+        algorithmOids.add("2.16.840.1.101.3.4.3.1");
+        algorithmOids.add("2.16.840.1.101.3.4.3.2");
+        algorithmOids.add("1.2.840.10040.4.3");
+        algorithmOids.add("1.2.840.10045.4.3.2");
+		
+		
+        if (!algorithmOids.contains(key.getSignatureAlgorithmOid())) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "Signature Algorithm OID not amoung the recommended algorithms: ", getName(key)},
+						 new Object[] { key },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the DeprecBarcodeXds constraint of '<em>Key Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateKeyType_DeprecBarcodeXds(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+		if (key.getBarcodeXsd() != null) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.WARNING,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "barcode xsd is depecated: ", getName(key)},
+						 new Object[] { key },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
 	/**
 	 * Validates the ValidKeyType constraint of '<em>Key Type</em>'.
 	 * <!-- begin-user-doc -->
@@ -460,6 +571,21 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 			}			
 			result = false;			
 		}
+		
+		if (publicKey != null && publicKey.getKeytype().equals("PUBLIC KEY")) {
+				if (diagnostics != null) {
+					diagnostics.add
+						(createDiagnostic
+							(Diagnostic.WARNING,
+							 DIAGNOSTIC_SOURCE,
+							 0,
+							 "_UI_GenericConstraint_diagnostic",
+							 new Object[] { "Public Key should be provided as Certificate: ", getName(key)},
+							 new Object[] { key },
+							 context));
+				}			
+				result = false;			
+		}	
 		
 		if ( (publicKey == null || 
 			  publicKey.getKeytype().equals("PUBLIC KEY") )

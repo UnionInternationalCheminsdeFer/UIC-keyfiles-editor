@@ -27,11 +27,11 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.impl.AllowedProductOwnerCodesTypeImpl#getProductOwnerCode <em>Product Owner Code</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.AllowedProductOwnerCodesTypeImpl#getProductOwnerName <em>Product Owner Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -80,6 +80,7 @@ public class AllowedProductOwnerCodesTypeImpl extends EObjectImpl implements All
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BigInteger> getProductOwnerCode() {
 		if (productOwnerCode == null) {
 			productOwnerCode = new EDataTypeEList<BigInteger>(BigInteger.class, this, BarCodeKeyExchangePackage.ALLOWED_PRODUCT_OWNER_CODES_TYPE__PRODUCT_OWNER_CODE);
@@ -92,6 +93,7 @@ public class AllowedProductOwnerCodesTypeImpl extends EObjectImpl implements All
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getProductOwnerName() {
 		if (productOwnerName == null) {
 			productOwnerName = new EDataTypeEList<String>(String.class, this, BarCodeKeyExchangePackage.ALLOWED_PRODUCT_OWNER_CODES_TYPE__PRODUCT_OWNER_NAME);
@@ -179,7 +181,7 @@ public class AllowedProductOwnerCodesTypeImpl extends EObjectImpl implements All
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (productOwnerCode: ");
 		result.append(productOwnerCode);
 		result.append(", productOwnerName: ");

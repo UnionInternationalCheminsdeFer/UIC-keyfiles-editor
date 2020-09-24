@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.impl.PublicKeyTypeImpl#getValue <em>Value</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.PublicKeyTypeImpl#getKeytype <em>Keytype</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -100,6 +100,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public byte[] getValue() {
 		return value;
 	}
@@ -109,6 +110,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(byte[] newValue) {
 		byte[] oldValue = value;
 		value = newValue;
@@ -121,6 +123,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getKeytype() {
 		return keytype;
 	}
@@ -130,6 +133,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKeytype(String newKeytype) {
 		String oldKeytype = keytype;
 		keytype = newKeytype;
@@ -144,6 +148,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetKeytype() {
 		String oldKeytype = keytype;
 		boolean oldKeytypeESet = keytypeESet;
@@ -158,6 +163,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetKeytype() {
 		return keytypeESet;
 	}
@@ -239,7 +245,7 @@ public class PublicKeyTypeImpl extends EObjectImpl implements PublicKeyType {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (value: ");
 		result.append(value);
 		result.append(", keytype: ");

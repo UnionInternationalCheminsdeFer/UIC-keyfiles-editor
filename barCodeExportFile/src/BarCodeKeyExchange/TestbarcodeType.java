@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.TestbarcodeType#getImagetype <em>Imagetype</em>}</li>
  *   <li>{@link BarCodeKeyExchange.TestbarcodeType#getImagedata <em>Imagedata</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getTestbarcodeType()
  * @model extendedMetaData="name='testbarcode_._type' kind='elementOnly'"

@@ -31,11 +31,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.impl.KeysTypeImpl#getKey <em>Key</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.KeysTypeImpl#getBarcodeStructure <em>Barcode Structure</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -84,6 +84,7 @@ public class KeysTypeImpl extends EObjectImpl implements KeysType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<KeyType> getKey() {
 		if (key == null) {
 			key = new EObjectContainmentEList<KeyType>(KeyType.class, this, BarCodeKeyExchangePackage.KEYS_TYPE__KEY);
@@ -96,6 +97,7 @@ public class KeysTypeImpl extends EObjectImpl implements KeysType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BarcodeStructureType> getBarcodeStructure() {
 		if (barcodeStructure == null) {
 			barcodeStructure = new EObjectContainmentEList<BarcodeStructureType>(BarcodeStructureType.class, this, BarCodeKeyExchangePackage.KEYS_TYPE__BARCODE_STRUCTURE);

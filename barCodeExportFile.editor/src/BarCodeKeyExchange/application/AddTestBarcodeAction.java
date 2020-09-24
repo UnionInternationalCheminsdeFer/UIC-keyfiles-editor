@@ -21,7 +21,7 @@ import BarCodeKeyExchange.KeyType;
 import BarCodeKeyExchange.TestbarcodeType;
 import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorPlugin;
 
-import org.eclipse.emf.transaction.util.TransactionUtil;
+
 
 
 public class AddTestBarcodeAction extends BaseSelectionListenerAction {
@@ -97,7 +97,7 @@ public class AddTestBarcodeAction extends BaseSelectionListenerAction {
 
 	    if (key == null) return;
 		
-		Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+		Shell shell = Display.getDefault().getActiveShell();
         FileDialog fd = new FileDialog(shell, SWT.READ_ONLY);
         fd.setText(LocalLanguageSupport._Action_SelectTestBarcodeFile);
         fd.setText(this.getText());
@@ -157,7 +157,7 @@ public class AddTestBarcodeAction extends BaseSelectionListenerAction {
 
 	
 	private void updateKey(KeyType key, String fileName, byte[] value) {
-		EditingDomain domain = TransactionUtil.getEditingDomain(key);
+		EditingDomain domain = EditingUtils.getActiveDomain();
 		
 	
 		TestbarcodeType testbarcode = BarCodeKeyExchange.BarCodeKeyExchangeFactory.eINSTANCE.createTestbarcodeType();

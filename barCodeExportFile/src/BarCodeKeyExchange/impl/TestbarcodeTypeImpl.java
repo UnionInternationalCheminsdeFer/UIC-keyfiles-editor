@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.impl.TestbarcodeTypeImpl#getImagetype <em>Imagetype</em>}</li>
  *   <li>{@link BarCodeKeyExchange.impl.TestbarcodeTypeImpl#getImagedata <em>Imagedata</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -101,6 +101,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ImagetypeType getImagetype() {
 		return imagetype;
 	}
@@ -110,6 +111,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImagetype(ImagetypeType newImagetype) {
 		ImagetypeType oldImagetype = imagetype;
 		imagetype = newImagetype == null ? IMAGETYPE_EDEFAULT : newImagetype;
@@ -124,6 +126,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetImagetype() {
 		ImagetypeType oldImagetype = imagetype;
 		boolean oldImagetypeESet = imagetypeESet;
@@ -138,6 +141,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetImagetype() {
 		return imagetypeESet;
 	}
@@ -147,6 +151,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public byte[] getImagedata() {
 		return imagedata;
 	}
@@ -156,6 +161,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImagedata(byte[] newImagedata) {
 		byte[] oldImagedata = imagedata;
 		imagedata = newImagedata;
@@ -240,7 +246,7 @@ public class TestbarcodeTypeImpl extends EObjectImpl implements TestbarcodeType 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (imagetype: ");
 		if (imagetypeESet) result.append(imagetype); else result.append("<unset>");
 		result.append(", imagedata: ");

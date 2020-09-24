@@ -80,6 +80,7 @@ public class BarCodeKeyExchangeActionBarContributor
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void run(IAction action) {
 			BarCodeKeyExchangeModelWizard wizard = new BarCodeKeyExchangeModelWizard();
 			wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
@@ -324,6 +325,7 @@ public class BarCodeKeyExchangeActionBarContributor
 	 * @generated
 	 */
 	public void contributeToToolBarGen(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("barcodekeyexchange-settings"));
 		toolBarManager.add(new Separator("barcodekeyexchange-additions"));
 	}	
@@ -337,15 +339,18 @@ public class BarCodeKeyExchangeActionBarContributor
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		contributeToToolBarGen(toolBarManager);
-		/*
-		toolBarManager.insertAfter("metamodel-additions", exportCertificateToPemAction); //$NON-NLS-1$
-		toolBarManager.insertAfter("metamodel-additions", exportPublicKeyToPemAction); //$NON-NLS-1$
-		toolBarManager.insertAfter("metamodel-additions", importFromPemAction); //$NON-NLS-1$
 		
-		toolBarManager.insertAfter("metamodel-additions", saveTestBarcodeAction); //$NON-NLS-1$
-		toolBarManager.insertAfter("metamodel-additions", addTestBarcodeAction);//$NON-NLS-1$
-		toolBarManager.insertAfter("metamodel-additions", displayTestBarcodeAction);//$NON-NLS-1$
-		*/
+		/*
+		 * images are missing
+
+		toolBarManager.insertAfter("barcodekeyexchange-additions", exportCertificateToPemAction); //$NON-NLS-1$
+		toolBarManager.insertAfter("barcodekeyexchange-additions", exportPublicKeyToPemAction); //$NON-NLS-1$
+		toolBarManager.insertAfter("barcodekeyexchange-additions", importFromPemAction); //$NON-NLS-1$
+		
+		toolBarManager.insertAfter("barcodekeyexchange-additions", saveTestBarcodeAction); //$NON-NLS-1$
+		toolBarManager.insertAfter("barcodekeyexchange-additions", addTestBarcodeAction);//$NON-NLS-1$
+		toolBarManager.insertAfter("barcodekeyexchange-additions", displayTestBarcodeAction);//$NON-NLS-1$
+	   */
 	}
 
 	/**
@@ -388,6 +393,8 @@ public class BarCodeKeyExchangeActionBarContributor
 		addGlobalActions(submenuManager);
 	}
 
+
+
 	/**
 	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc -->
@@ -406,14 +413,17 @@ public class BarCodeKeyExchangeActionBarContributor
 		}
 		if (part == null) {
 			selectionProvider = null;
-		} else {
+		}
+		else {
 			selectionProvider = part.getSite().getSelectionProvider();
-			selectionProvider.addSelectionChangedListener(this);
+			if (selectionProvider != null) {
+				selectionProvider.addSelectionChangedListener(this);
 
-			// Fake a selection changed event to update the menus.
-			//
-			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+				// Fake a selection changed event to update the menus.
+				//
+				if (selectionProvider.getSelection() != null) {
+					selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
+				}
 			}
 		}
 	}
@@ -638,7 +648,7 @@ public class BarCodeKeyExchangeActionBarContributor
 				if (contributionItem instanceof MenuManager) {
 					MenuManager submenuManager = (MenuManager)contributionItem;
 					if (submenuActions.containsKey(submenuManager.getMenuText())) {
-						depopulateManager(submenuManager, submenuActions.get(contributionItem));
+						depopulateManager(submenuManager, submenuActions.get(submenuManager.getMenuText()));
 						manager.remove(contributionItem);
 					}
 				}

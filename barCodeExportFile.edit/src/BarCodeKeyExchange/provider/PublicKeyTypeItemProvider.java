@@ -6,6 +6,7 @@ package BarCodeKeyExchange.provider;
 import BarCodeKeyExchange.BarCodeKeyExchangePackage;
 import BarCodeKeyExchange.PublicKeyType;
 
+import java.util.Base64;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,7 +20,6 @@ import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -38,12 +38,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 public class PublicKeyTypeItemProvider
 	extends ItemProviderAdapter
 	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		IItemFontProvider {
+		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -166,10 +161,17 @@ public class PublicKeyTypeItemProvider
 	@Override
 	public String getText(Object object) {
 		String labelValue = ((PublicKeyType)object).getKeytype();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_PublicKeyType_type") :
-			getString("_UI_PublicKeyType_type") + " " + label;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(getString("_UI_PublicKeyType_type")).append(" ");
+		sb.append(labelValue).append(": ");
+		if (((PublicKeyType)object).getValue().length > 10) {
+			String s = Base64.getEncoder().encodeToString(((PublicKeyType)object).getValue());
+
+			sb.append(s.substring(0, 9)).append("...");
+		}
+		
+		return sb.toString();
 	}
 
 	/**

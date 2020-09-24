@@ -6,23 +6,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import barcode.barCodeData.SecurityUtils;
+
 
 import BarCodeKeyExchange.DocumentRoot;
 import BarCodeKeyExchange.KeyType;
 import BarCodeKeyExchange.KeysType;
 import BarCodeKeyExchange.PublicKeyType;
-import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditor;
 import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorPlugin;
+import BarCodeKeyExchange.utils.SecurityUtils;
 
 
 public class ExportAllKeysToPemAction extends BaseSelectionListenerAction {
@@ -58,9 +56,7 @@ public class ExportAllKeysToPemAction extends BaseSelectionListenerAction {
 		EObject root = null;
 
 		try {
-			IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-			BarCodeKeyExchangeEditor editor = (BarCodeKeyExchangeEditor) editorPart;
-			TransactionalEditingDomain domain = (TransactionalEditingDomain) editor.getEditingDomain();
+			EditingDomain domain = EditingUtils.getActiveDomain();
 			root  = (EObject) domain.getResourceSet().getResources().get(0).getContents().get(0).eContents().get(0);
 		} catch (Exception e){
 			return false;
@@ -140,9 +136,7 @@ public class ExportAllKeysToPemAction extends BaseSelectionListenerAction {
 		EObject root = null;
 
 		try {
-			IEditorPart editorPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-			BarCodeKeyExchangeEditor editor = (BarCodeKeyExchangeEditor) editorPart;
-			TransactionalEditingDomain domain = (TransactionalEditingDomain) editor.getEditingDomain();
+			EditingDomain domain = EditingUtils.getActiveDomain();
 			root  = (EObject) domain.getResourceSet().getResources().get(0).getContents().get(0).eContents().get(0);
 		} catch (Exception e){
 			return;
@@ -176,7 +170,7 @@ public class ExportAllKeysToPemAction extends BaseSelectionListenerAction {
     	String path = "";
 		
 		try {
-				Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+				Shell shell = Display.getDefault().getActiveShell();
 				DirectoryDialog fd = new DirectoryDialog(shell);
 	            fd.setText(this.getText());
 	            path = fd.open();

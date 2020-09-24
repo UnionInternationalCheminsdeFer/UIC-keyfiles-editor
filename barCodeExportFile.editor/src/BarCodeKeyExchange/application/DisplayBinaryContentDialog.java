@@ -14,6 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Set;
 
 import javax.security.auth.x500.X500Principal;
 
@@ -30,8 +31,9 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 
+import BarCodeKeyExchange.utils.SecurityUtils;
 
-import barcode.barCodeData.SecurityUtils;
+
 
 
 public class DisplayBinaryContentDialog extends Dialog {
@@ -263,6 +265,21 @@ public class DisplayBinaryContentDialog extends Dialog {
 		l26.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));			
 				
 		
+		Set<String> critSet = cer.getCriticalExtensionOIDs();
+		if (critSet != null && !critSet.isEmpty()) {
+
+			Label lc25 = toolkit.createLabel(container,"Set of critical extensions: ");
+			lc25.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		    StringBuilder sb = new StringBuilder();
+		    for (String oid : critSet) {
+		    	 if (sb.length() > 0) sb.append(",");
+		    	 sb.append(oid);
+		    }
+			Label lc26 = toolkit.createLabel(container, sb.toString());
+			lc26.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));			
+		}
+		
+		
 		PublicKey key = cer.getPublicKey();
 		
 		if (key == null){
@@ -286,7 +303,7 @@ public class DisplayBinaryContentDialog extends Dialog {
 		Label l18 = toolkit.createLabel(container, format);
 		l18.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));				
 
-		if ( key instanceof DSAPublicKey) {
+		if (key instanceof DSAPublicKey) {
 			
 			DSAPublicKey pubKey = (DSAPublicKey) key;
 			
@@ -322,7 +339,6 @@ public class DisplayBinaryContentDialog extends Dialog {
 			
 		}
 
-		
 	}
 
 	private boolean checkBinaryContent() {

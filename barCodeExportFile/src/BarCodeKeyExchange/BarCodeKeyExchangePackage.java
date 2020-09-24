@@ -100,6 +100,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	int ALLOWED_PRODUCT_OWNER_CODES_TYPE_FEATURE_COUNT = 2;
 
 	/**
+	 * The number of operations of the '<em>Allowed Product Owner Codes Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOWED_PRODUCT_OWNER_CODES_TYPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.BarcodeStructureTypeImpl <em>Barcode Structure Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +182,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	int BARCODE_STRUCTURE_TYPE_FEATURE_COUNT = 6;
 
 	/**
+	 * The number of operations of the '<em>Barcode Structure Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BARCODE_STRUCTURE_TYPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,6 +246,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	int DOCUMENT_ROOT_FEATURE_COUNT = 4;
 
 	/**
+	 * The number of operations of the '<em>Document Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_ROOT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.KeysTypeImpl <em>Keys Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,6 +290,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @ordered
 	 */
 	int KEYS_TYPE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Keys Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEYS_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.KeyTypeImpl <em>Key Type</em>}' class.
@@ -311,13 +347,22 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	int KEY_TYPE__SIGNATURE_ALGORITHM = 3;
 
 	/**
+	 * The feature id for the '<em><b>Signature Algorithm Oid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_TYPE__SIGNATURE_ALGORITHM_OID = 4;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__ID = 4;
+	int KEY_TYPE__ID = 5;
 
 	/**
 	 * The feature id for the '<em><b>Public Key</b></em>' containment reference.
@@ -326,7 +371,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__PUBLIC_KEY = 5;
+	int KEY_TYPE__PUBLIC_KEY = 6;
 
 	/**
 	 * The feature id for the '<em><b>Barcode Version</b></em>' attribute.
@@ -335,7 +380,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__BARCODE_VERSION = 6;
+	int KEY_TYPE__BARCODE_VERSION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
@@ -344,7 +389,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__START_DATE = 7;
+	int KEY_TYPE__START_DATE = 8;
 
 	/**
 	 * The feature id for the '<em><b>End Date</b></em>' attribute.
@@ -353,7 +398,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__END_DATE = 8;
+	int KEY_TYPE__END_DATE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Barcode Xsd</b></em>' attribute.
@@ -362,7 +407,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__BARCODE_XSD = 9;
+	int KEY_TYPE__BARCODE_XSD = 10;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Product Owner Codes</b></em>' containment reference.
@@ -371,7 +416,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__ALLOWED_PRODUCT_OWNER_CODES = 10;
+	int KEY_TYPE__ALLOWED_PRODUCT_OWNER_CODES = 11;
 
 	/**
 	 * The feature id for the '<em><b>Last Day Of Sale</b></em>' attribute.
@@ -380,7 +425,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__LAST_DAY_OF_SALE = 11;
+	int KEY_TYPE__LAST_DAY_OF_SALE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Key Forged</b></em>' attribute.
@@ -389,7 +434,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__KEY_FORGED = 12;
+	int KEY_TYPE__KEY_FORGED = 13;
 
 	/**
 	 * The feature id for the '<em><b>Comment For Encryption Type</b></em>' attribute.
@@ -398,7 +443,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__COMMENT_FOR_ENCRYPTION_TYPE = 13;
+	int KEY_TYPE__COMMENT_FOR_ENCRYPTION_TYPE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Testbarcode</b></em>' containment reference.
@@ -407,7 +452,7 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE__TESTBARCODE = 14;
+	int KEY_TYPE__TESTBARCODE = 15;
 
 	/**
 	 * The number of structural features of the '<em>Key Type</em>' class.
@@ -416,8 +461,17 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_TYPE_FEATURE_COUNT = 15;
+	int KEY_TYPE_FEATURE_COUNT = 16;
 
+
+	/**
+	 * The number of operations of the '<em>Key Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.PublicKeyTypeImpl <em>Public Key Type</em>}' class.
@@ -458,6 +512,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 
 
 	/**
+	 * The number of operations of the '<em>Public Key Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLIC_KEY_TYPE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.impl.TestbarcodeTypeImpl <em>Testbarcode Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -493,6 +556,15 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @ordered
 	 */
 	int TESTBARCODE_TYPE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Testbarcode Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TESTBARCODE_TYPE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link BarCodeKeyExchange.ImagetypeType <em>Imagetype Type</em>}' enum.
@@ -782,6 +854,17 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getKeyType_SignatureAlgorithm();
+
+	/**
+	 * Returns the meta object for the attribute '{@link BarCodeKeyExchange.KeyType#getSignatureAlgorithmOid <em>Signature Algorithm Oid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Signature Algorithm Oid</em>'.
+	 * @see BarCodeKeyExchange.KeyType#getSignatureAlgorithmOid()
+	 * @see #getKeyType()
+	 * @generated
+	 */
+	EAttribute getKeyType_SignatureAlgorithmOid();
 
 	/**
 	 * Returns the meta object for the attribute '{@link BarCodeKeyExchange.KeyType#getId <em>Id</em>}'.
@@ -1227,6 +1310,14 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute KEY_TYPE__SIGNATURE_ALGORITHM = eINSTANCE.getKeyType_SignatureAlgorithm();
+
+		/**
+		 * The meta object literal for the '<em><b>Signature Algorithm Oid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_TYPE__SIGNATURE_ALGORITHM_OID = eINSTANCE.getKeyType_SignatureAlgorithmOid();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.

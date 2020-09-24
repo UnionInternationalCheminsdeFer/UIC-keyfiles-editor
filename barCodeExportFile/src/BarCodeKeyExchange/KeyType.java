@@ -19,11 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.KeyType#getIssuerName <em>Issuer Name</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getIssuerCode <em>Issuer Code</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getVersionType <em>Version Type</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getSignatureAlgorithm <em>Signature Algorithm</em>}</li>
+ *   <li>{@link BarCodeKeyExchange.KeyType#getSignatureAlgorithmOid <em>Signature Algorithm Oid</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getId <em>Id</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getPublicKey <em>Public Key</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getBarcodeVersion <em>Barcode Version</em>}</li>
@@ -36,7 +38,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link BarCodeKeyExchange.KeyType#getCommentForEncryptionType <em>Comment For Encryption Type</em>}</li>
  *   <li>{@link BarCodeKeyExchange.KeyType#getTestbarcode <em>Testbarcode</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ValidKeyType'"
@@ -178,6 +179,29 @@ public interface KeyType extends EObject {
 	 * @generated
 	 */
 	void setSignatureAlgorithm(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Signature Algorithm Oid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Signature Algorithm Oid</em>' attribute.
+	 * @see #setSignatureAlgorithmOid(String)
+	 * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType_SignatureAlgorithmOid()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='element' name='signatureAlgorithmOid' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	String getSignatureAlgorithmOid();
+
+	/**
+	 * Sets the value of the '{@link BarCodeKeyExchange.KeyType#getSignatureAlgorithmOid <em>Signature Algorithm Oid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Signature Algorithm Oid</em>' attribute.
+	 * @see #getSignatureAlgorithmOid()
+	 * @generated
+	 */
+	void setSignatureAlgorithmOid(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.

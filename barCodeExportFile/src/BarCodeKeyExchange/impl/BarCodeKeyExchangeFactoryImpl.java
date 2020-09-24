@@ -32,7 +32,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 */
 	public static BarCodeKeyExchangeFactory init() {
 		try {
-			BarCodeKeyExchangeFactory theBarCodeKeyExchangeFactory = (BarCodeKeyExchangeFactory)EPackage.Registry.INSTANCE.getEFactory("platform:/resource/barCodeExportFile/schema/barCodeKeyExchange.xsd"); 
+			BarCodeKeyExchangeFactory theBarCodeKeyExchangeFactory = (BarCodeKeyExchangeFactory)EPackage.Registry.INSTANCE.getEFactory(BarCodeKeyExchangePackage.eNS_URI);
 			if (theBarCodeKeyExchangeFactory != null) {
 				return theBarCodeKeyExchangeFactory;
 			}
@@ -120,6 +120,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AllowedProductOwnerCodesType createAllowedProductOwnerCodesType() {
 		AllowedProductOwnerCodesTypeImpl allowedProductOwnerCodesType = new AllowedProductOwnerCodesTypeImpl();
 		return allowedProductOwnerCodesType;
@@ -130,6 +131,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BarcodeStructureType createBarcodeStructureType() {
 		BarcodeStructureTypeImpl barcodeStructureType = new BarcodeStructureTypeImpl();
 		return barcodeStructureType;
@@ -140,6 +142,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DocumentRoot createDocumentRoot() {
 		DocumentRootImpl documentRoot = new DocumentRootImpl();
 		return documentRoot;
@@ -150,6 +153,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public KeysType createKeysType() {
 		KeysTypeImpl keysType = new KeysTypeImpl();
 		return keysType;
@@ -160,6 +164,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public KeyType createKeyType() {
 		KeyTypeImpl keyType = new KeyTypeImpl();
 		return keyType;
@@ -170,6 +175,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PublicKeyType createPublicKeyType() {
 		PublicKeyTypeImpl publicKeyType = new PublicKeyTypeImpl();
 		return publicKeyType;
@@ -180,6 +186,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TestbarcodeType createTestbarcodeType() {
 		TestbarcodeTypeImpl testbarcodeType = new TestbarcodeTypeImpl();
 		return testbarcodeType;
@@ -266,6 +273,7 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BarCodeKeyExchangePackage getBarCodeKeyExchangePackage() {
 		return (BarCodeKeyExchangePackage)getEPackage();
 	}

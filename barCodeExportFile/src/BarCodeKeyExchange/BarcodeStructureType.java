@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link BarCodeKeyExchange.BarcodeStructureType#getIssuerName <em>Issuer Name</em>}</li>
  *   <li>{@link BarCodeKeyExchange.BarcodeStructureType#getIssuerCode <em>Issuer Code</em>}</li>
@@ -19,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link BarCodeKeyExchange.BarcodeStructureType#getBarcodeVersion <em>Barcode Version</em>}</li>
  *   <li>{@link BarCodeKeyExchange.BarcodeStructureType#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getBarcodeStructureType()
  * @model extendedMetaData="name='BarcodeStructureType' kind='elementOnly'"

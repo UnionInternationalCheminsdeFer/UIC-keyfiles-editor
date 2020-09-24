@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -38,7 +37,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 public class KeyTypeItemProvider
 	extends ItemProviderAdapter
 	implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, IItemFontProvider {
+		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -64,6 +63,7 @@ public class KeyTypeItemProvider
 			addIssuerCodePropertyDescriptor(object);
 			addVersionTypePropertyDescriptor(object);
 			addSignatureAlgorithmPropertyDescriptor(object);
+			addSignatureAlgorithmOidPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addPublicKeyPropertyDescriptor(object);
 			addBarcodeVersionPropertyDescriptor(object);
@@ -157,6 +157,28 @@ public class KeyTypeItemProvider
 				 getString("_UI_KeyType_signatureAlgorithm_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_KeyType_signatureAlgorithm_feature", "_UI_KeyType_type"),
 				 BarCodeKeyExchangePackage.Literals.KEY_TYPE__SIGNATURE_ALGORITHM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Signature Algorithm Oid feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSignatureAlgorithmOidPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_KeyType_signatureAlgorithmOid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KeyType_signatureAlgorithmOid_feature", "_UI_KeyType_type"),
+				 BarCodeKeyExchangePackage.Literals.KEY_TYPE__SIGNATURE_ALGORITHM_OID,
 				 true,
 				 false,
 				 false,
@@ -443,6 +465,7 @@ public class KeyTypeItemProvider
 			case BarCodeKeyExchangePackage.KEY_TYPE__ISSUER_CODE:
 			case BarCodeKeyExchangePackage.KEY_TYPE__VERSION_TYPE:
 			case BarCodeKeyExchangePackage.KEY_TYPE__SIGNATURE_ALGORITHM:
+			case BarCodeKeyExchangePackage.KEY_TYPE__SIGNATURE_ALGORITHM_OID:
 			case BarCodeKeyExchangePackage.KEY_TYPE__ID:
 			case BarCodeKeyExchangePackage.KEY_TYPE__BARCODE_VERSION:
 			case BarCodeKeyExchangePackage.KEY_TYPE__START_DATE:

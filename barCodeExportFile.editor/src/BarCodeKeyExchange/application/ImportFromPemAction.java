@@ -26,7 +26,7 @@ import BarCodeKeyExchange.KeyType;
 import BarCodeKeyExchange.PublicKeyType;
 import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorPlugin;
 
-import org.eclipse.emf.transaction.util.TransactionUtil;
+
 
 
 public class ImportFromPemAction extends BaseSelectionListenerAction {
@@ -88,7 +88,7 @@ public class ImportFromPemAction extends BaseSelectionListenerAction {
 		
 		
 		try {
-			Shell shell = BarCodeKeyExchangeEditorPlugin.getPlugin().getWorkbench().getActiveWorkbenchWindow().getShell();
+			Shell shell = Display.getDefault().getActiveShell();
             FileDialog fd = new FileDialog(shell, SWT.READ_ONLY);
             fd.setText(this.getText());
             String[] filterExt = {"*.pem" };
@@ -192,7 +192,7 @@ public class ImportFromPemAction extends BaseSelectionListenerAction {
 	}
 	
 	private void updatePublicKey(KeyType key, byte[] value, String type) {
-		EditingDomain domain = TransactionUtil.getEditingDomain(key);
+		EditingDomain domain = EditingUtils.getActiveDomain();
 		
 		CompoundCommand com = new CompoundCommand();
 		
