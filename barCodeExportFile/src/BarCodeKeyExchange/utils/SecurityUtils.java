@@ -15,8 +15,11 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 import org.bouncycastle.asn1.x509.TBSCertificate;
 
@@ -25,6 +28,24 @@ import org.bouncycastle.asn1.x509.TBSCertificate;
 
 
 public class SecurityUtils {
+	
+	public static Set<String> uicAlgorithms = Stream.of(
+			   "SHA224withDSA(2048,224)",
+	           "SHA256withDSA(2048,256)",
+	           "SHA1withDSA(1024,160)",
+	           "SHA1withDSA(512,160)",
+	           "SHA224-DSA2048-NoASN1",
+	           "SHA256-DSA2048-NoASN1",
+	           "SHA224-DSA2048-ASN1",
+	           "SHA160-DSA1024-ASN1",
+	           "SHA160-DSA512-ASN1",
+	           "SHA256withECDSA-P256").collect(Collectors.toSet());
+
+	public static Set<String> uicAlgorithmOids = Stream.of(
+			  "2.16.840.1.101.3.4.3.1",
+			  "2.16.840.1.101.3.4.3.2",
+			  "1.2.840.10040.4.3",
+			  "1.2.840.10045.4.3.2").collect(Collectors.toSet());
 	
 	
 	

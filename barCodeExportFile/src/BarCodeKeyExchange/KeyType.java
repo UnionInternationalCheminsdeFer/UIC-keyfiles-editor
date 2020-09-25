@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ValidKeyType'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ValidKeyType ValidOidFormat RecommendedOId'"
  *        extendedMetaData="name='KeyType' kind='elementOnly'"
  * @generated
  */

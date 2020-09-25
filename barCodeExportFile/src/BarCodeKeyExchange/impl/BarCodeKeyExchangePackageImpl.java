@@ -1205,7 +1205,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		  (keyTypeEClass,
 		   source,
 		   new String[] {
-			   "constraints", "ValidKeyType"
+			   "constraints", "ValidKeyType ValidOidFormat RecommendedOId"
 		   });
 	}
 

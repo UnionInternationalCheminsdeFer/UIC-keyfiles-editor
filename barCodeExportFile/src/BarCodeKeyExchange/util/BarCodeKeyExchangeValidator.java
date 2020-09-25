@@ -8,12 +8,9 @@ import BarCodeKeyExchange.utils.SecurityUtils;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -174,6 +171,8 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(keyType, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(keyType, diagnostics, context);
 		if (result || diagnostics != null) result &= validateKeyType_ValidKeyType(keyType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateKeyType_ValidOidFormat(keyType, diagnostics, context);
+		if (result || diagnostics != null) result &= validateKeyType_RecommendedOId(keyType, diagnostics, context);
 		return result;
 	}
 
@@ -185,6 +184,8 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 	 */
 	public boolean validateKeyType_ValidKeyType(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		
+
+	
 		boolean result = true;
 		
 		if (key.getPublicKey() == null){
@@ -262,17 +263,7 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 		
 		if (key.getSignatureAlgorithm()!= null && 
 			key.getSignatureAlgorithm().length() !=0 &&
-			!key.getSignatureAlgorithm().equals("SHA224withDSA(2048,224)") && 
-			!key.getSignatureAlgorithm().equals("SHA256withDSA(2048,256)") &&
-			!key.getSignatureAlgorithm().equals("SHA1withDSA(1024,160)")   &&
-			!key.getSignatureAlgorithm().equals("SHA1withDSA(512,160)")    &&			
-			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-NoASN1")   && 
-			!key.getSignatureAlgorithm().equals("SHA256-DSA2048-NoASN1")   &&			
-			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-ASN1")     && 
-			!key.getSignatureAlgorithm().equals("SHA160-DSA1024-ASN1")     &&
-			!key.getSignatureAlgorithm().equals("SHA160-DSA512-ASN1")      &&
-			!key.getSignatureAlgorithm().equals("SHA256withECDSA-P256")    
-	        )     {
+			!SecurityUtils.uicAlgorithms.contains(key.getSignatureAlgorithm()) )     {
 			
 			if (diagnostics != null) {
 				diagnostics.add
@@ -292,16 +283,7 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 		
 		if (key.getSignatureAlgorithm()!= null && 
 			key.getSignatureAlgorithm().length() !=0 &&
-			!key.getSignatureAlgorithm().equals("SHA224withDSA(2048,224)") && 
-			!key.getSignatureAlgorithm().equals("SHA1withDSA(1024,160)")   &&
-			!key.getSignatureAlgorithm().equals("SHA256withDSA(2048,256)") &&
-			!key.getSignatureAlgorithm().equals("SHA1withDSA(512,160)")    &&			
-			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-NoASN1")   && 
-			!key.getSignatureAlgorithm().equals("SHA256-DSA2048-NoASN1")   &&			
-			!key.getSignatureAlgorithm().equals("SHA224-DSA2048-ASN1")     && 
-			!key.getSignatureAlgorithm().equals("SHA160-DSA1024-ASN1")     &&
-			!key.getSignatureAlgorithm().equals("SHA160-DSA512-ASN1")      &&
-			!key.getSignatureAlgorithm().equals("SHA256withECDSA-P256")    &&
+			!SecurityUtils.uicAlgorithms.contains(key.getSignatureAlgorithm()) &&
 			!key.getSignatureAlgorithm().startsWith("NonUIC")       
 		     )     {
 				
@@ -350,7 +332,6 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validateKeyType_ValidOidFormat(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
-
 		
 		if (key.getSignatureAlgorithmOid() == null) {
 			//warning
@@ -365,6 +346,7 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 						 new Object[] { key },
 						 context));
 			}
+			return true;
 		}
 
 		
@@ -390,28 +372,21 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the ListeOIDCheck constraint of '<em>Key Type</em>'.
+	 * Validates the RecommendedOId constraint of '<em>Key Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean validateKeyType_ListeOIDCheck(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateKeyType_RecommendedOId(KeyType key, DiagnosticChain diagnostics, Map<Object, Object> context) {
 
         if (key.getSignatureAlgorithmOid() == null) return true;
         
-        
-        Set<String>  algorithmOids = new HashSet<String>();
-        algorithmOids.add("2.16.840.1.101.3.4.3.1");
-        algorithmOids.add("2.16.840.1.101.3.4.3.2");
-        algorithmOids.add("1.2.840.10040.4.3");
-        algorithmOids.add("1.2.840.10045.4.3.2");
 		
-		
-        if (!algorithmOids.contains(key.getSignatureAlgorithmOid())) {
+        if (!SecurityUtils.uicAlgorithmOids.contains(key.getSignatureAlgorithmOid())) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
-						(Diagnostic.ERROR,
+						(Diagnostic.WARNING,
 						 DIAGNOSTIC_SOURCE,
 						 0,
 						 "_UI_GenericConstraint_diagnostic",

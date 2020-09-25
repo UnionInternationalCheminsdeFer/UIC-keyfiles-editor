@@ -171,7 +171,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="KeyType">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="ValidKeyType"/>
+      <details key="constraints" value="ValidKeyType ValidOidFormat RecommendedOId"/>
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="KeyType"/>
