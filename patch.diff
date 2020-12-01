@@ -1,0 +1,310 @@
+From 22832fc4aeda49ab1b61484be1db802c65e84854 Mon Sep 17 00:00:00 2001
+From: CGantert345 <57003061+CGantert345@users.noreply.github.com>
+Date: Tue, 1 Dec 2020 15:41:14 +0100
+Subject: [PATCH] bug fix: certificate validation in download, open file dialog
+
+---
+ barCodeExportFile.editor/META-INF/MANIFEST.MF |  1 +
+ barCodeExportFile.editor/plugin.xml           | 67 +++++++++++++++----
+ .../application/FileOpenHandler.java          |  1 -
+ ...arCodeKeyExchangeActionBarContributor.java |  4 ++
+ .../BarCodeKeyExchangeEditor.java             |  2 +
+ .../BarCodeKeyExchangeEditorAdvisor.java      |  3 +-
+ .../BarCodeKeyExchangeEditorPlugin.java       |  2 +
+ .../BarCodeKeyExchangeLoadUicWizard.java      | 34 ++++++++--
+ .../presentation/RelaxedX509TrustManager.java | 20 ++++++
+ .../utils/SecurityUtils.java                  |  3 +-
+ 10 files changed, 114 insertions(+), 23 deletions(-)
+ create mode 100644 barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/RelaxedX509TrustManager.java
+
+diff --git a/barCodeExportFile.editor/META-INF/MANIFEST.MF b/barCodeExportFile.editor/META-INF/MANIFEST.MF
+index 45c17fb..11aad3e 100644
+--- a/barCodeExportFile.editor/META-INF/MANIFEST.MF
++++ b/barCodeExportFile.editor/META-INF/MANIFEST.MF
+@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.core.runtime,
+  barCodeExportFile.edit;visibility:=reexport,
+  org.eclipse.emf.ecore.xmi;visibility:=reexport,
+  org.eclipse.emf.edit.ui;visibility:=reexport,
++ org.eclipse.emf.ecore.edit;visibility:=reexport,
+  org.eclipse.help.ui,
+  org.eclipse.ui.forms,
+  org.eclipse.e4.ui.workbench.renderers.swt,
+diff --git a/barCodeExportFile.editor/plugin.xml b/barCodeExportFile.editor/plugin.xml
+index c77e5d7..1281a56 100644
+--- a/barCodeExportFile.editor/plugin.xml
++++ b/barCodeExportFile.editor/plugin.xml
+@@ -28,24 +28,67 @@
+             name="%UI_Bar_Code_Keys">
+       </perspective>
+    </extension>
++
++   <extension point="org.eclipse.ui.commands">
++      <!-- @generated barCodeKeyExchange -->
++      <command
++            name="%_UI_Menu_OpenURI_label"
++            description="%_UI_Menu_OpenURI_description"
++            categoryId="org.eclipse.ui.category.file"
++            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURICommand"/>
++      <command
++            name="%_UI_Menu_Open_label"
++            description="%_UI_Menu_Open_description"
++            categoryId="org.eclipse.ui.category.file"
++            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"/>
++   </extension>
++
++   <extension point="org.eclipse.ui.bindings">
++      <!-- @generated barCodeKeyExchange -->
++      <key
++            commandId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURICommand"
++            sequence="M1+U"
++            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
++      <key
++            commandId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"
++            sequence="M1+O"
++            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
++   </extension>
++
++   <extension point="org.eclipse.ui.actionSets">
++      <!-- @generated barCodeKeyExchange -->
++      <actionSet
++            label="%_UI_BarCodeKeyExchangeEditorAdvisor_ActionSet_label"
++            visible="true"
++            id="BarCodeKeyExchangeEditorAdvisorActionSet">
++         <action
++               label="%_UI_Menu_About_label"
++               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$AboutAction"
++               menubarPath="help/additions"
++               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorAboutAction"/>
++      </actionSet>
++   </extension>
++
++   <extension point="org.eclipse.ui.actionSets">
++      <!-- @generated barCodeKeyExchange -->
++      <actionSet
++            label="%_UI_BarCodeKeyExchangeModelWizard_ActionSet_label"
++            visible="true"
++            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorActionSet">
++      </actionSet>
++   </extension>
+    
+    <extension
+          point="org.eclipse.ui.actionSets">
+       <actionSet
+             id="BarCodeKeyExchange.file.actionset"
+-            label="file.actionset">
+-         <action
+-               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
+-               definitionId="file.new"
+-               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"
+-               label="%UI_New_Keys_File"
+-               menubarPath="file/additions">
+-         </action>
++            label="file.actionset"
++            visible="true">
+          <action
+-               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$LoadAction"
+-               definitionId="file.load"
+-               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorLoadAction"
+-               label="%_UI_Download_UIC_Public_Key_File"
++               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$OpenAction"
++               definitionId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"
++               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenAction"
++               label="%_UI_Menu_Open_label"
+                menubarPath="file/additions">
+          </action>
+       </actionSet>
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/application/FileOpenHandler.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/application/FileOpenHandler.java
+index 2c66216..8e85615 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/application/FileOpenHandler.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/application/FileOpenHandler.java
+@@ -24,7 +24,6 @@ import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor;
+  * @see org.eclipse.core.commands.AbstractHandler
+  *
+  * @version 1.0
+- * @author ChristophCDobosz
+  *
+  * <b>History:</b>
+  * <pre><!-- Do not use tabs in the history table! Do not extend table width!
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeActionBarContributor.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeActionBarContributor.java
+index 3a7394d..26579e0 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeActionBarContributor.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeActionBarContributor.java
+@@ -111,6 +111,10 @@ public class BarCodeKeyExchangeActionBarContributor
+ 			wizardDialog.open();
+ 		}
+ 	}	
++	
++	
++	
++	
+ 
+ 	/**
+ 	 * This keeps track of the active editor.
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditor.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditor.java
+index 2218ab8..8a3014a 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditor.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditor.java
+@@ -106,6 +106,7 @@ import org.eclipse.emf.common.util.Diagnostic;
+ import org.eclipse.emf.common.util.URI;
+ 
+ import org.eclipse.emf.ecore.EPackage;
++import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
+ import org.eclipse.emf.ecore.resource.Resource;
+ import org.eclipse.emf.ecore.resource.ResourceSet;
+ import org.eclipse.emf.ecore.util.EContentAdapter;
+@@ -624,6 +625,7 @@ public class BarCodeKeyExchangeEditor
+ 
+ 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+ 		adapterFactory.addAdapterFactory(new BarCodeKeyExchangeItemProviderAdapterFactory());
++		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+ 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+ 
+ 		// Create the command stack that will notify this editor as commands are executed.
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorAdvisor.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorAdvisor.java
+index 6e492ed..134eb7c 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorAdvisor.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorAdvisor.java
+@@ -320,6 +320,8 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
+ 
+ 			});
+ 			
++		
++			
+ 			menu.add(new Separator());
+ 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+ 			menu.add(new Separator());
+@@ -335,7 +337,6 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
+ 			return menu;
+ 		}		
+ 	
+-		
+ 		/**
+ 		 * Creates the 'File' menu.
+ 		 * <!-- begin-user-doc -->
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorPlugin.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorPlugin.java
+index b82902a..fe3251c 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorPlugin.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeEditorPlugin.java
+@@ -7,6 +7,7 @@ import org.eclipse.emf.common.EMFPlugin;
+ import org.eclipse.emf.common.ui.EclipseUIPlugin;
+ 
+ import org.eclipse.emf.common.util.ResourceLocator;
++import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+ 
+ /**
+  * This is the central singleton for the BarCodeKeyExchange editor plugin.
+@@ -40,6 +41,7 @@ public final class BarCodeKeyExchangeEditorPlugin extends EMFPlugin {
+ 	public BarCodeKeyExchangeEditorPlugin() {
+ 		super
+ 			(new ResourceLocator [] {
++				EcoreEditPlugin.INSTANCE,
+ 			});
+ 	}
+ 
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeLoadUicWizard.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeLoadUicWizard.java
+index 707b8ec..46cd77e 100644
+--- a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeLoadUicWizard.java
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/BarCodeKeyExchangeLoadUicWizard.java
+@@ -46,6 +46,10 @@ import java.io.InputStream;
+ import java.io.FileOutputStream;
+ import java.net.URL;
+ import javax.net.ssl.HttpsURLConnection;
++import javax.net.ssl.KeyManager;
++import javax.net.ssl.SSLContext;
++import javax.net.ssl.SSLSocketFactory;
++import javax.net.ssl.TrustManager;
+ 
+ import org.eclipse.jface.operation.IRunnableWithProgress;
+ import org.eclipse.swt.events.SelectionAdapter;
+@@ -147,11 +151,12 @@ public class BarCodeKeyExchangeLoadUicWizard extends Wizard implements INewWizar
+ 										LocalLanguageSupport._Action_DownloadPKMWmissing);		
+ 								return;
+ 							}
+-					
++
+ 							/** load UIC keys */			
+ 							URL uicKeysUrl = new URL(keysDownloadUrl);
+-
+-							final HttpsURLConnection con = (HttpsURLConnection) uicKeysUrl.openConnection();
++							
++							
++							HttpsURLConnection con = (HttpsURLConnection) uicKeysUrl.openConnection();
+ 							if (con == null){
+ 								MessageDialog.openError(
+ 										Display.getDefault().getActiveShell(),
+@@ -159,12 +164,27 @@ public class BarCodeKeyExchangeLoadUicWizard extends Wizard implements INewWizar
+ 										LocalLanguageSupport._Error_ConnectionNotEstablished + keysDownloadUrl );																	
+ 								return;
+ 							}
+-							
+-							
++							con.setRequestMethod("GET");//$NON-NLS-1$
++							con.setUseCaches(false);
+ 							con.setDoInput(true);
+ 
+-							// Request method
+-							con.setRequestMethod("GET");//$NON-NLS-1$
++							if (con instanceof HttpsURLConnection) {
++							    try {
++							        TrustManager[] tm = {new RelaxedX509TrustManager()};
++							        SSLContext sslContext = SSLContext.getInstance("SSL");
++							        sslContext.init(null, tm, new java.security.SecureRandom());
++							        SSLSocketFactory sf = sslContext.getSocketFactory();
++							        ((HttpsURLConnection)con).setSSLSocketFactory(sf);
++							    } catch (java.security.GeneralSecurityException e) {
++							        BarCodeKeyExchangeEditorPlugin.INSTANCE.log(e);
++									MessageDialog.openError(
++											Display.getDefault().getActiveShell(),
++											LocalLanguageSupport._Generic_Error,
++											LocalLanguageSupport._Error_ConnectionNotEstablished + keysDownloadUrl );																	
++									return;
++							    }
++							}
++
+ 							try {
+ 								con.connect();
+ 							} catch (Exception e) {
+diff --git a/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/RelaxedX509TrustManager.java b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/RelaxedX509TrustManager.java
+new file mode 100644
+index 0000000..e18a2f8
+--- /dev/null
++++ b/barCodeExportFile.editor/src/BarCodeKeyExchange/presentation/RelaxedX509TrustManager.java
+@@ -0,0 +1,20 @@
++package BarCodeKeyExchange.presentation;
++
++import javax.net.ssl.X509TrustManager;
++
++class RelaxedX509TrustManager implements X509TrustManager {
++	
++    public boolean isClientTrusted(java.security.cert.X509Certificate[] chain){ 
++    	return true; 
++    }
++    public boolean isServerTrusted(java.security.cert.X509Certificate[] chain){ 
++    	return true; 
++    }
++    public java.security.cert.X509Certificate[] getAcceptedIssuers() { 
++    	return null; 
++    }
++    
++    public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String input) {}
++    
++    public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String input) {}
++}
+\ No newline at end of file
+diff --git a/barCodeExportFile/src/BarCodeKeyExchange/utils/SecurityUtils.java b/barCodeExportFile/src/BarCodeKeyExchange/utils/SecurityUtils.java
+index 9674c46..8984d37 100644
+--- a/barCodeExportFile/src/BarCodeKeyExchange/utils/SecurityUtils.java
++++ b/barCodeExportFile/src/BarCodeKeyExchange/utils/SecurityUtils.java
+@@ -297,8 +297,7 @@ public class SecurityUtils {
+ 		 
+ 		 
+ 		 Encoder encoder = Base64.getEncoder();
+-		 byte[] base64 = encoder.encode(securityFeature);
+-		 String sBase64 = String.valueOf(base64);
++		 String sBase64 = encoder.encodeToString(securityFeature);
+ 		 StringBuilder sb = new StringBuilder();
+ 		 if ( isCertificate ) {
+ 			 sb.append("-----BEGIN CERTIFICATE-----\n");
+-- 
+2.20.1.windows.1
+
