@@ -24,7 +24,6 @@ import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor;
  * @see org.eclipse.core.commands.AbstractHandler
  *
  * @version 1.0
- * @author ChristophCDobosz
  *
  * <b>History:</b>
  * <pre><!-- Do not use tabs in the history table! Do not extend table width!

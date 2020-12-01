@@ -46,6 +46,10 @@ import java.io.InputStream;
 import java.io.FileOutputStream;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -147,11 +151,12 @@ public class BarCodeKeyExchangeLoadUicWizard extends Wizard implements INewWizar
 										LocalLanguageSupport._Action_DownloadPKMWmissing);		
 								return;
 							}
-					
+
 							/** load UIC keys */			
 							URL uicKeysUrl = new URL(keysDownloadUrl);
-
-							final HttpsURLConnection con = (HttpsURLConnection) uicKeysUrl.openConnection();
+							
+							
+							HttpsURLConnection con = (HttpsURLConnection) uicKeysUrl.openConnection();
 							if (con == null){
 								MessageDialog.openError(
 										Display.getDefault().getActiveShell(),
@@ -159,12 +164,27 @@ public class BarCodeKeyExchangeLoadUicWizard extends Wizard implements INewWizar
 										LocalLanguageSupport._Error_ConnectionNotEstablished + keysDownloadUrl );																	
 								return;
 							}
-							
-							
+							con.setRequestMethod("GET");//$NON-NLS-1$
+							con.setUseCaches(false);
 							con.setDoInput(true);
 
-							// Request method
-							con.setRequestMethod("GET");//$NON-NLS-1$
+							if (con instanceof HttpsURLConnection) {
+							    try {
+							        TrustManager[] tm = {new RelaxedX509TrustManager()};
+							        SSLContext sslContext = SSLContext.getInstance("SSL");
+							        sslContext.init(null, tm, new java.security.SecureRandom());
+							        SSLSocketFactory sf = sslContext.getSocketFactory();
+							        ((HttpsURLConnection)con).setSSLSocketFactory(sf);
+							    } catch (java.security.GeneralSecurityException e) {
+							        BarCodeKeyExchangeEditorPlugin.INSTANCE.log(e);
+									MessageDialog.openError(
+											Display.getDefault().getActiveShell(),
+											LocalLanguageSupport._Generic_Error,
+											LocalLanguageSupport._Error_ConnectionNotEstablished + keysDownloadUrl );																	
+									return;
+							    }
+							}
+
 							try {
 								con.connect();
 							} catch (Exception e) {

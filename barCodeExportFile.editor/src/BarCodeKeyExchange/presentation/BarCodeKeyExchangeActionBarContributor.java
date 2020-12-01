@@ -111,6 +111,10 @@ public class BarCodeKeyExchangeActionBarContributor
 			wizardDialog.open();
 		}
 	}	
+	
+	
+	
+	
 
 	/**
 	 * This keeps track of the active editor.

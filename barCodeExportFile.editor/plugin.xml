@@ -28,24 +28,67 @@
             name="%UI_Bar_Code_Keys">
       </perspective>
    </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated barCodeKeyExchange -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated barCodeKeyExchange -->
+      <key
+            commandId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated barCodeKeyExchange -->
+      <actionSet
+            label="%_UI_BarCodeKeyExchangeEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="BarCodeKeyExchangeEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorAboutAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated barCodeKeyExchange -->
+      <actionSet
+            label="%_UI_BarCodeKeyExchangeModelWizard_ActionSet_label"
+            visible="true"
+            id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorActionSet">
+      </actionSet>
+   </extension>
    
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
             id="BarCodeKeyExchange.file.actionset"
-            label="file.actionset">
+            label="file.actionset"
+            visible="true">
          <action
-               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
-               definitionId="file.new"
-               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"
-               label="%UI_New_Keys_File"
-               menubarPath="file/additions">
-         </action>
-         <action
-               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$LoadAction"
-               definitionId="file.load"
-               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorLoadAction"
-               label="%_UI_Download_UIC_Public_Key_File"
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$OpenAction"
+               definitionId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenAction"
+               label="%_UI_Menu_Open_label"
                menubarPath="file/additions">
          </action>
       </actionSet>

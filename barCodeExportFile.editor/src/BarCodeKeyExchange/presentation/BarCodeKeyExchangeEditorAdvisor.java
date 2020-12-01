@@ -320,6 +320,8 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 
 			});
 			
+		
+			
 			menu.add(new Separator());
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			menu.add(new Separator());
@@ -335,7 +337,6 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 			return menu;
 		}		
 	
-		
 		/**
 		 * Creates the 'File' menu.
 		 * <!-- begin-user-doc -->

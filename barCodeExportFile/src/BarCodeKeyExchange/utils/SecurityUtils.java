@@ -297,8 +297,7 @@ public class SecurityUtils {
 		 
 		 
 		 Encoder encoder = Base64.getEncoder();
-		 byte[] base64 = encoder.encode(securityFeature);
-		 String sBase64 = String.valueOf(base64);
+		 String sBase64 = encoder.encodeToString(securityFeature);
 		 StringBuilder sb = new StringBuilder();
 		 if ( isCertificate ) {
 			 sb.append("-----BEGIN CERTIFICATE-----\n");
