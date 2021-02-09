@@ -5,6 +5,9 @@
   <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
     <details key="qualified" value="false"/>
   </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="conversionDelegates" value="http:///org/eclipse/emf/ecore/util/DateConversionDelegate"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="AllowedProductOwnerCodesType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="allowedProductOwnerCodes_._type"/>
@@ -242,7 +245,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Date">
+        eType="#//DateAsXmlDateTime">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="startDate"/>
@@ -250,7 +253,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Date">
+        eType="#//DateAsXmlDateTime">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="endDate"/>
@@ -273,7 +276,7 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastDayOfSale" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Date">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastDayOfSale" eType="#//DateAsXmlDateTime">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="lastDayOfSale"/>
@@ -346,5 +349,13 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DateAsXmlDateTime" instanceClassName="javax.xml.datatype.XMLGregorianCalendar">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="propertyEditorFactory" value="editor://org.eclipse.nebula.widgets.cdatetime/yyyy-MM-dd"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/DateConversionDelegate">
+      <details key="format" value="//SimpleDateFormat/yyyy-MM-dd"/>
+    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

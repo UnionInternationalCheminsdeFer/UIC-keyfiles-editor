@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -114,6 +115,8 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 				return validateImagetypeTypeObject((ImagetypeType)value, diagnostics, context);
 			case BarCodeKeyExchangePackage.KEY_FORGED_TYPE_OBJECT:
 				return validateKeyForgedTypeObject((KeyForgedType)value, diagnostics, context);
+			case BarCodeKeyExchangePackage.DATE_AS_XML_DATE_TIME:
+				return validateDateAsXmlDateTime((XMLGregorianCalendar)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -492,6 +495,15 @@ public class BarCodeKeyExchangeValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateKeyForgedTypeObject(KeyForgedType keyForgedTypeObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDateAsXmlDateTime(XMLGregorianCalendar dateAsXmlDateTime, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

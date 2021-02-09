@@ -8,6 +8,7 @@ package BarCodeKeyExchange.impl;
 
 import BarCodeKeyExchange.*;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -89,6 +90,8 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 				return createImagetypeTypeObjectFromString(eDataType, initialValue);
 			case BarCodeKeyExchangePackage.KEY_FORGED_TYPE_OBJECT:
 				return createKeyForgedTypeObjectFromString(eDataType, initialValue);
+			case BarCodeKeyExchangePackage.DATE_AS_XML_DATE_TIME:
+				return createDateAsXmlDateTimeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +113,8 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 				return convertImagetypeTypeObjectToString(eDataType, instanceValue);
 			case BarCodeKeyExchangePackage.KEY_FORGED_TYPE_OBJECT:
 				return convertKeyForgedTypeObjectToString(eDataType, instanceValue);
+			case BarCodeKeyExchangePackage.DATE_AS_XML_DATE_TIME:
+				return convertDateAsXmlDateTimeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -266,6 +271,24 @@ public class BarCodeKeyExchangeFactoryImpl extends EFactoryImpl implements BarCo
 	 */
 	public String convertKeyForgedTypeObjectToString(EDataType eDataType, Object instanceValue) {
 		return convertKeyForgedTypeToString(BarCodeKeyExchangePackage.Literals.KEY_FORGED_TYPE, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XMLGregorianCalendar createDateAsXmlDateTimeFromString(EDataType eDataType, String initialValue) {
+		return (XMLGregorianCalendar)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDateAsXmlDateTimeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

@@ -19,6 +19,7 @@ import BarCodeKeyExchange.KeysType;
 import BarCodeKeyExchange.PublicKeyType;
 import BarCodeKeyExchange.TestbarcodeType;
 import BarCodeKeyExchange.util.BarCodeKeyExchangeValidator;
+import javax.xml.datatype.XMLGregorianCalendar;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -115,6 +116,13 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * @generated
 	 */
 	private EDataType keyForgedTypeObjectEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dateAsXmlDateTimeEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -645,6 +653,15 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getDateAsXmlDateTime() {
+		return dateAsXmlDateTimeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public BarCodeKeyExchangeFactory getBarCodeKeyExchangeFactory() {
 		return (BarCodeKeyExchangeFactory)getEFactoryInstance();
@@ -724,6 +741,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		// Create data types
 		imagetypeTypeObjectEDataType = createEDataType(IMAGETYPE_TYPE_OBJECT);
 		keyForgedTypeObjectEDataType = createEDataType(KEY_FORGED_TYPE_OBJECT);
+		dateAsXmlDateTimeEDataType = createEDataType(DATE_AS_XML_DATE_TIME);
 	}
 
 	/**
@@ -790,11 +808,11 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		initEAttribute(getKeyType_Id(), theXMLTypePackage.getInt(), "id", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKeyType_PublicKey(), this.getPublicKeyType(), null, "publicKey", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_BarcodeVersion(), theXMLTypePackage.getInt(), "barcodeVersion", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getKeyType_StartDate(), theXMLTypePackage.getDate(), "startDate", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getKeyType_EndDate(), theXMLTypePackage.getDate(), "endDate", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyType_StartDate(), this.getDateAsXmlDateTime(), "startDate", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyType_EndDate(), this.getDateAsXmlDateTime(), "endDate", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_BarcodeXsd(), theXMLTypePackage.getString(), "barcodeXsd", null, 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKeyType_AllowedProductOwnerCodes(), this.getAllowedProductOwnerCodesType(), null, "allowedProductOwnerCodes", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getKeyType_LastDayOfSale(), theXMLTypePackage.getDate(), "lastDayOfSale", null, 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyType_LastDayOfSale(), this.getDateAsXmlDateTime(), "lastDayOfSale", null, 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_KeyForged(), this.getKeyForgedType(), "keyForged", "false", 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyType_CommentForEncryptionType(), theXMLTypePackage.getString(), "commentForEncryptionType", null, 1, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKeyType_Testbarcode(), this.getTestbarcodeType(), null, "testbarcode", null, 0, 1, KeyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -823,6 +841,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		// Initialize data types
 		initEDataType(imagetypeTypeObjectEDataType, ImagetypeType.class, "ImagetypeTypeObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(keyForgedTypeObjectEDataType, KeyForgedType.class, "KeyForgedTypeObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dateAsXmlDateTimeEDataType, XMLGregorianCalendar.class, "DateAsXmlDateTime", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -832,6 +851,8 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		createExtendedMetaDataAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// http:///org/eclipse/emf/ecore/util/DateConversionDelegate
+		createDateConversionDelegateAnnotations();
 	}
 
 	/**
@@ -1202,10 +1223,32 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
+		  (this,
+		   source,
+		   new String[] {
+			   "conversionDelegates", "http:///org/eclipse/emf/ecore/util/DateConversionDelegate"
+		   });
+		addAnnotation
 		  (keyTypeEClass,
 		   source,
 		   new String[] {
 			   "constraints", "ValidKeyType ValidOidFormat RecommendedOId"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/DateConversionDelegate</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDateConversionDelegateAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/DateConversionDelegate";
+		addAnnotation
+		  (dateAsXmlDateTimeEDataType,
+		   source,
+		   new String[] {
+			   "format", "//SimpleDateFormat/yyyy-MM-dd"
 		   });
 	}
 

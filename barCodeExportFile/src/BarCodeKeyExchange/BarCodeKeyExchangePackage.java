@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EReference;
  * @see BarCodeKeyExchange.BarCodeKeyExchangeFactory
  * @model kind="package"
  *        extendedMetaData="qualified='false'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore conversionDelegates='http:///org/eclipse/emf/ecore/util/DateConversionDelegate'"
  * @generated
  */
 public interface BarCodeKeyExchangePackage extends EPackage {
@@ -608,6 +609,17 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>Date As Xml Date Time</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see javax.xml.datatype.XMLGregorianCalendar
+	 * @see BarCodeKeyExchange.impl.BarCodeKeyExchangePackageImpl#getDateAsXmlDateTime()
+	 * @generated
+	 */
+	int DATE_AS_XML_DATE_TIME = 11;
+
+
+	/**
 	 * Returns the meta object for class '{@link BarCodeKeyExchange.AllowedProductOwnerCodesType <em>Allowed Product Owner Codes Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1096,6 +1108,18 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 	EDataType getKeyForgedTypeObject();
 
 	/**
+	 * Returns the meta object for data type '{@link javax.xml.datatype.XMLGregorianCalendar <em>Date As Xml Date Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Date As Xml Date Time</em>'.
+	 * @see javax.xml.datatype.XMLGregorianCalendar
+	 * @model instanceClass="javax.xml.datatype.XMLGregorianCalendar"
+	 *        annotation="http:///org/eclipse/emf/ecore/util/DateConversionDelegate format='//SimpleDateFormat/yyyy-MM-dd'"
+	 * @generated
+	 */
+	EDataType getDateAsXmlDateTime();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1498,6 +1522,16 @@ public interface BarCodeKeyExchangePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType KEY_FORGED_TYPE_OBJECT = eINSTANCE.getKeyForgedTypeObject();
+
+		/**
+		 * The meta object literal for the '<em>Date As Xml Date Time</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see javax.xml.datatype.XMLGregorianCalendar
+		 * @see BarCodeKeyExchange.impl.BarCodeKeyExchangePackageImpl#getDateAsXmlDateTime()
+		 * @generated
+		 */
+		EDataType DATE_AS_XML_DATE_TIME = eINSTANCE.getDateAsXmlDateTime();
 
 	}
 

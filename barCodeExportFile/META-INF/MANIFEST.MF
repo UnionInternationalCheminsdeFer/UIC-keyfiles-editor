@@ -14,6 +14,7 @@ Export-Package: BarCodeKeyExchange,
 Require-Bundle: org.eclipse.core.runtime;x-installation:=greedy;resolution:=optional,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.bouncycastle.bcpkix;bundle-version="1.64.0"
+ org.bouncycastle.bcpkix;bundle-version="1.64.0",
+ org.eclipse.nebula.widgets.cdatetime;bundle-version="1.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -20,13 +20,11 @@
 
    <windowImages i16="/barCodeExportFile.editor/icons/UIC GIF square_16.gif" i32="/barCodeExportFile.editor/icons/UIC GIF square_32.gif" i48="/barCodeExportFile.editor/icons/UIC GIF square_48.gif" i64="/barCodeExportFile.editor/icons/UIC GIF square_64.gif" i128="/barCodeExportFile.editor/icons/UIC GIF square_128.gif"/>
 
-
    <launcher>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
       <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8</windows>
@@ -148,6 +146,9 @@ this application includes third party packages. Please see the plugin list to vi
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
       <plugin id="org.eclipse.jface.text"/>
+      <plugin id="org.eclipse.nebula.cwt"/>
+      <plugin id="org.eclipse.nebula.jface.cdatetime"/>
+      <plugin id="org.eclipse.nebula.widgets.cdatetime"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>

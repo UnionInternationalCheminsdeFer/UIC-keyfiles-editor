@@ -349,7 +349,7 @@ public interface KeyType extends EObject {
 	 * @return the value of the '<em>Start Date</em>' attribute.
 	 * @see #setStartDate(XMLGregorianCalendar)
 	 * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType_StartDate()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.Date" required="true"
+	 * @model dataType="BarCodeKeyExchange.DateAsXmlDateTime" required="true"
 	 *        extendedMetaData="kind='element' name='startDate' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -376,7 +376,7 @@ public interface KeyType extends EObject {
 	 * @return the value of the '<em>End Date</em>' attribute.
 	 * @see #setEndDate(XMLGregorianCalendar)
 	 * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType_EndDate()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.Date" required="true"
+	 * @model dataType="BarCodeKeyExchange.DateAsXmlDateTime" required="true"
 	 *        extendedMetaData="kind='element' name='endDate' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -457,7 +457,7 @@ public interface KeyType extends EObject {
 	 * @return the value of the '<em>Last Day Of Sale</em>' attribute.
 	 * @see #setLastDayOfSale(XMLGregorianCalendar)
 	 * @see BarCodeKeyExchange.BarCodeKeyExchangePackage#getKeyType_LastDayOfSale()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.Date"
+	 * @model dataType="BarCodeKeyExchange.DateAsXmlDateTime"
 	 *        extendedMetaData="kind='element' name='lastDayOfSale' namespace='##targetNamespace'"
 	 * @generated
 	 */
