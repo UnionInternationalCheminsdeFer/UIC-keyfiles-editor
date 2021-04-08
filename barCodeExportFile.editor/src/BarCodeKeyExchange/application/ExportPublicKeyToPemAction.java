@@ -153,7 +153,7 @@ public class ExportPublicKeyToPemAction extends BaseSelectionListenerAction {
 				PublicKey key = cer.getPublicKey();		
 				if (key != null){
 					securityFeature = key.getEncoded();
-					return SecurityUtils.convertToPem(securityFeature);
+					return SecurityUtils.convertToPem(key.getEncoded());
 				}
 		} catch (CertificateException e) {
 				return null;
