@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Bar Kode Key Editor" uid="BCE" id="barCodeExportFile.editor.BCE" application="barCodeExportFile.editor.BarCodeKeyExchangeEditorAdvisorApplication" version="1.8" useFeatures="false" includeLaunchers="true">
+<product name="Bar Kode Key Editor" uid="BCE" id="barCodeExportFile.editor.BCE" application="barCodeExportFile.editor.BarCodeKeyExchangeEditorAdvisorApplication" version="2.0" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/barCodeExportFile.editor/icons/UIC GIF square_128.gif"/>
