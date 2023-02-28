@@ -882,7 +882,7 @@ public class BarCodeKeyExchangeEditor
 		BarCodeKeyExchangePackageImpl.init();
 		EPackage.Registry.INSTANCE.put(null, BarCodeKeyExchangePackage.eINSTANCE);
         XMLResourceImpl resource = new XMLResourceImpl();
-        File file = new File(resourceURI.path());
+        File file = new File(resourceURI.toFileString());
 
         try {
 			Map<String, Boolean> options = new HashMap<String, Boolean>();
@@ -1324,7 +1324,7 @@ public class BarCodeKeyExchangeEditor
 	protected void hideTabs() {
 		if (getPageCount() <= 1) {
 			setPageText(0, "");
-			if (getContainer() instanceof CTabFolder) {
+			if (getContainer() != null && getContainer() instanceof CTabFolder) {
 				Point point = getContainer().getSize();
 				Rectangle clientArea = getContainer().getClientArea();
 				getContainer().setSize(point.x,  2 * point.y - clientArea.height - clientArea.y);
