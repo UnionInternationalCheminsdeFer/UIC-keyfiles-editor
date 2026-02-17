@@ -836,7 +836,7 @@ public class BarCodeKeyExchangePackageImpl extends EPackageImpl implements BarCo
 		addEEnumLiteral(keyForgedTypeEEnum, KeyForgedType.FALSE);
 		addEEnumLiteral(keyForgedTypeEEnum, KeyForgedType._1);
 		addEEnumLiteral(keyForgedTypeEEnum, KeyForgedType._0);
-		addEEnumLiteral(keyForgedTypeEEnum, KeyForgedType._);
+		addEEnumLiteral(keyForgedTypeEEnum, KeyForgedType._EMPTY);
 
 		// Initialize data types
 		initEDataType(imagetypeTypeObjectEDataType, ImagetypeType.class, "ImagetypeTypeObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);

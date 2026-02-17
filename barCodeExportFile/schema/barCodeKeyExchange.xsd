@@ -45,16 +45,7 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="lastDayOfSale" type="xs:date" minOccurs="0"/>			
-			<xs:element name="keyForged" default="false" minOccurs="0">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="true"/>
-						<xs:enumeration value="false"/>
-						<xs:enumeration value="1"/>
-						<xs:enumeration value="0"/>
-						<xs:enumeration value=""/>						
-					</xs:restriction>
-				</xs:simpleType>
+			<xs:element name="keyForged" default="false" minOccurs="0" type="xs:boolean">
 			</xs:element>
 			<!--<xs:element name="keyForged" type="xs:boolean" fixed="false" minOccurs="0" />-->
 			<xs:element name="commentForEncryptionType" type="xs:string"/>

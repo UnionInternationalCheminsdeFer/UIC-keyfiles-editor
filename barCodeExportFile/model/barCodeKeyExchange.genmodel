@@ -18,7 +18,7 @@
       <genEnumLiterals ecoreEnumLiteral="BarCodeKeyExchange.ecore#//KeyForgedType/false"/>
       <genEnumLiterals ecoreEnumLiteral="BarCodeKeyExchange.ecore#//KeyForgedType/_1"/>
       <genEnumLiterals ecoreEnumLiteral="BarCodeKeyExchange.ecore#//KeyForgedType/_0"/>
-      <genEnumLiterals ecoreEnumLiteral="BarCodeKeyExchange.ecore#//KeyForgedType/_"/>
+      <genEnumLiterals ecoreEnumLiteral="BarCodeKeyExchange.ecore#//KeyForgedType/_empty"/>
     </genEnums>
     <genDataTypes ecoreDataType="BarCodeKeyExchange.ecore#//ImagetypeTypeObject"/>
     <genDataTypes ecoreDataType="BarCodeKeyExchange.ecore#//KeyForgedTypeObject"/>
