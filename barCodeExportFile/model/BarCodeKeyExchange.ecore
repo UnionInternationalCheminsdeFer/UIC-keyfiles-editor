@@ -142,7 +142,7 @@
     <eLiterals name="false" value="1"/>
     <eLiterals name="_1" value="2" literal="1"/>
     <eLiterals name="_0" value="3" literal="0"/>
-    <eLiterals name="_" value="4" literal=""/>
+    <eLiterals name="_empty" value="4" literal=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="KeyForgedTypeObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

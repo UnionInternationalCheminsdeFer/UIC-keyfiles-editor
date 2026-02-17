@@ -66,6 +66,18 @@
                class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$AboutAction"
                menubarPath="help/additions"
                id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURICommand"
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenCommand"
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorAdvisorOpenAction"/>
       </actionSet>
    </extension>
 
@@ -75,6 +87,11 @@
             label="%_UI_BarCodeKeyExchangeModelWizard_ActionSet_label"
             visible="true"
             id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorActionSet">
+         <action
+               label="%_UI_BarCodeKeyExchangeModelWizard_label"
+               class="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="BarCodeKeyExchange.presentation.BarCodeKeyExchangeActionBarContributorNewAction"/>
       </actionSet>
    </extension>
    

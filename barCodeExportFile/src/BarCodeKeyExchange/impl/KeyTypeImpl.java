@@ -1,24 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package BarCodeKeyExchange.impl;
-
-import java.util.GregorianCalendar;
 
 import BarCodeKeyExchange.AllowedProductOwnerCodesType;
 import BarCodeKeyExchange.BarCodeKeyExchangePackage;
 import BarCodeKeyExchange.KeyForgedType;
 import BarCodeKeyExchange.KeyType;
-
 import BarCodeKeyExchange.PublicKeyType;
-
 import BarCodeKeyExchange.TestbarcodeType;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -388,35 +378,10 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected KeyTypeImpl() {
 		super();
-		if (this.getStartDate() == null)  {
-			GregorianCalendar c = new GregorianCalendar();
-			XMLGregorianCalendar date2 = null;
-			try {
-				date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-			} catch (DatatypeConfigurationException e) {
-				// TODO Automatisch generierter Erfassungsblock
-				e.printStackTrace();
-			}
-			
-			this.setStartDate(date2);
-		
-		}
-		
-		if (this.getEndDate() == null) {
-			GregorianCalendar c = new GregorianCalendar();
-			XMLGregorianCalendar date3 = null;
-			try {
-				date3 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-			} catch (DatatypeConfigurationException e) {
-				// TODO Automatisch generierter Erfassungsblock
-				e.printStackTrace();
-			}
-			this.setEndDate(date3);	
-		}
 	}
 
 	/**
@@ -434,7 +399,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getIssuerName() {
 		return issuerName;
 	}
@@ -444,7 +408,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setIssuerName(String newIssuerName) {
 		String oldIssuerName = issuerName;
 		issuerName = newIssuerName;
@@ -457,7 +420,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getIssuerCode() {
 		return issuerCode;
 	}
@@ -467,7 +429,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setIssuerCode(int newIssuerCode) {
 		int oldIssuerCode = issuerCode;
 		issuerCode = newIssuerCode;
@@ -482,7 +443,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void unsetIssuerCode() {
 		int oldIssuerCode = issuerCode;
 		boolean oldIssuerCodeESet = issuerCodeESet;
@@ -497,7 +457,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public boolean isSetIssuerCode() {
 		return issuerCodeESet;
 	}
@@ -507,7 +466,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getVersionType() {
 		return versionType;
 	}
@@ -517,7 +475,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setVersionType(String newVersionType) {
 		String oldVersionType = versionType;
 		versionType = newVersionType;
@@ -530,7 +487,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getSignatureAlgorithm() {
 		return signatureAlgorithm;
 	}
@@ -540,7 +496,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setSignatureAlgorithm(String newSignatureAlgorithm) {
 		String oldSignatureAlgorithm = signatureAlgorithm;
 		signatureAlgorithm = newSignatureAlgorithm;
@@ -553,7 +508,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getSignatureAlgorithmOid() {
 		return signatureAlgorithmOid;
 	}
@@ -563,7 +517,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setSignatureAlgorithmOid(String newSignatureAlgorithmOid) {
 		String oldSignatureAlgorithmOid = signatureAlgorithmOid;
 		signatureAlgorithmOid = newSignatureAlgorithmOid;
@@ -576,7 +529,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getId() {
 		return id;
 	}
@@ -586,7 +538,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setId(int newId) {
 		int oldId = id;
 		id = newId;
@@ -601,7 +552,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void unsetId() {
 		int oldId = id;
 		boolean oldIdESet = idESet;
@@ -616,7 +566,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public boolean isSetId() {
 		return idESet;
 	}
@@ -626,7 +575,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public PublicKeyType getPublicKey() {
 		return publicKey;
 	}
@@ -651,7 +599,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setPublicKey(PublicKeyType newPublicKey) {
 		if (newPublicKey != publicKey) {
 			NotificationChain msgs = null;
@@ -671,7 +618,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getBarcodeVersion() {
 		return barcodeVersion;
 	}
@@ -681,7 +627,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBarcodeVersion(int newBarcodeVersion) {
 		int oldBarcodeVersion = barcodeVersion;
 		barcodeVersion = newBarcodeVersion;
@@ -696,7 +641,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void unsetBarcodeVersion() {
 		int oldBarcodeVersion = barcodeVersion;
 		boolean oldBarcodeVersionESet = barcodeVersionESet;
@@ -711,7 +655,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public boolean isSetBarcodeVersion() {
 		return barcodeVersionESet;
 	}
@@ -721,7 +664,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public XMLGregorianCalendar getStartDate() {
 		return startDate;
 	}
@@ -731,7 +673,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setStartDate(XMLGregorianCalendar newStartDate) {
 		XMLGregorianCalendar oldStartDate = startDate;
 		startDate = newStartDate;
@@ -744,7 +685,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public XMLGregorianCalendar getEndDate() {
 		return endDate;
 	}
@@ -754,7 +694,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setEndDate(XMLGregorianCalendar newEndDate) {
 		XMLGregorianCalendar oldEndDate = endDate;
 		endDate = newEndDate;
@@ -767,7 +706,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getBarcodeXsd() {
 		return barcodeXsd;
 	}
@@ -777,7 +715,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setBarcodeXsd(String newBarcodeXsd) {
 		String oldBarcodeXsd = barcodeXsd;
 		barcodeXsd = newBarcodeXsd;
@@ -790,7 +727,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public AllowedProductOwnerCodesType getAllowedProductOwnerCodes() {
 		return allowedProductOwnerCodes;
 	}
@@ -815,7 +751,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setAllowedProductOwnerCodes(AllowedProductOwnerCodesType newAllowedProductOwnerCodes) {
 		if (newAllowedProductOwnerCodes != allowedProductOwnerCodes) {
 			NotificationChain msgs = null;
@@ -835,7 +770,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public XMLGregorianCalendar getLastDayOfSale() {
 		return lastDayOfSale;
 	}
@@ -845,7 +779,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setLastDayOfSale(XMLGregorianCalendar newLastDayOfSale) {
 		XMLGregorianCalendar oldLastDayOfSale = lastDayOfSale;
 		lastDayOfSale = newLastDayOfSale;
@@ -856,31 +789,18 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public KeyForgedType getKeyForged() {
-		if (keyForged == KeyForgedType._1){
-			return KeyForgedType.TRUE;
-		} else {
-			return KeyForgedType.FALSE;
-		}
+		return keyForged;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public void setKeyForged(KeyForgedType newKeyForged) {
-		if (newKeyForged == KeyForgedType._1) {
-			newKeyForged = KeyForgedType.TRUE;
-		}
-		if (newKeyForged == KeyForgedType._0) {
-			newKeyForged = KeyForgedType.FALSE;
-		}		
-		if (newKeyForged == null) {
-			newKeyForged = KeyForgedType.FALSE;
-		}
 		KeyForgedType oldKeyForged = keyForged;
 		keyForged = newKeyForged == null ? KEY_FORGED_EDEFAULT : newKeyForged;
 		boolean oldKeyForgedESet = keyForgedESet;
@@ -894,7 +814,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void unsetKeyForged() {
 		KeyForgedType oldKeyForged = keyForged;
 		boolean oldKeyForgedESet = keyForgedESet;
@@ -909,7 +828,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public boolean isSetKeyForged() {
 		return keyForgedESet;
 	}
@@ -919,7 +837,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getCommentForEncryptionType() {
 		return commentForEncryptionType;
 	}
@@ -929,7 +846,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setCommentForEncryptionType(String newCommentForEncryptionType) {
 		String oldCommentForEncryptionType = commentForEncryptionType;
 		commentForEncryptionType = newCommentForEncryptionType;
@@ -942,7 +858,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public TestbarcodeType getTestbarcode() {
 		return testbarcode;
 	}
@@ -967,7 +882,6 @@ public class KeyTypeImpl extends EObjectImpl implements KeyType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setTestbarcode(TestbarcodeType newTestbarcode) {
 		if (newTestbarcode != testbarcode) {
 			NotificationChain msgs = null;

@@ -57,22 +57,18 @@ public enum KeyForgedType implements Enumerator {
 	 * @ordered
 	 */
 	_0(3, "_0", "0"), /**
-	 * The '<em><b></b></em>' literal object.
+	 * The '<em><b>empty</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #__VALUE
+	 * @see #_EMPTY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	_(4, "_", "");
+	_EMPTY(4, "_empty", "");
 
 	/**
 	 * The '<em><b>True</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>True</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TRUE
 	 * @model name="true"
@@ -84,10 +80,6 @@ public enum KeyForgedType implements Enumerator {
 	/**
 	 * The '<em><b>False</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>False</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FALSE
 	 * @model name="false"
@@ -99,10 +91,6 @@ public enum KeyForgedType implements Enumerator {
 	/**
 	 * The '<em><b>1</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>1</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_1
 	 * @model literal="1"
@@ -114,10 +102,6 @@ public enum KeyForgedType implements Enumerator {
 	/**
 	 * The '<em><b>0</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>0</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_0
 	 * @model literal="0"
@@ -127,15 +111,15 @@ public enum KeyForgedType implements Enumerator {
 	public static final int _0_VALUE = 3;
 
 	/**
-	 * The '<em><b></b></em>' literal value.
+	 * The '<em><b>empty</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #_
-	 * @model literal=""
+	 * @see #_EMPTY
+	 * @model name="_empty" literal=""
 	 * @generated
 	 * @ordered
 	 */
-	public static final int __VALUE = 4;
+	public static final int _EMPTY_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Key Forged Type</b></em>' enumerators.
@@ -149,7 +133,7 @@ public enum KeyForgedType implements Enumerator {
 			FALSE,
 			_1,
 			_0,
-			_,
+			_EMPTY,
 		};
 
 	/**
@@ -210,7 +194,7 @@ public enum KeyForgedType implements Enumerator {
 			case FALSE_VALUE: return FALSE;
 			case _1_VALUE: return _1;
 			case _0_VALUE: return _0;
-			case __VALUE: return _;
+			case _EMPTY_VALUE: return _EMPTY;
 		}
 		return null;
 	}
@@ -253,7 +237,6 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -263,7 +246,6 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 	  return name;
 	}
@@ -273,7 +255,6 @@ public enum KeyForgedType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getLiteral() {
 	  return literal;
 	}

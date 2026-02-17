@@ -15,5 +15,5 @@ Require-Bundle: org.eclipse.core.runtime;x-installation:=greedy;resolution:=opti
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport
 Import-Package: org.osgi.framework
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy

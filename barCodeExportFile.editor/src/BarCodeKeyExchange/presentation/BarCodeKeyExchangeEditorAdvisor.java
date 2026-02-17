@@ -48,13 +48,14 @@ import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+
+import BarCodeKeyExchange.application.LocalLanguageSupport;
+
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
-
-import BarCodeKeyExchange.presentation.BarCodeKeyExchangeEditorPlugin;
 
 
 /**
@@ -554,7 +555,15 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 		public void run(IAction action) {
 			String[] filePaths = openFilePathDialog(getWindow().getShell(), SWT.OPEN, null);
 			if (filePaths.length > 0) {
-				openEditor(getWindow().getWorkbench(), URI.createFileURI(filePaths[0]));
+				try {
+					openEditor(getWindow().getWorkbench(), URI.createFileURI(filePaths[0]));
+				} catch (Exception e) {
+					MessageDialog.openError(
+							Display.getDefault().getActiveShell(),
+							LocalLanguageSupport._Generic_Error,
+							LocalLanguageSupport._Error_CouldNotWriteKeysFile + filePaths[0].toString()+ '\n' + e.getMessage());										
+					BarCodeKeyExchangeEditorPlugin.INSTANCE.log(e);
+				}
 			}
 		}
 	}
@@ -675,7 +684,7 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean openEditor(IWorkbench workbench, URI uri) {
 		IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
@@ -699,6 +708,13 @@ public final class BarCodeKeyExchangeEditorAdvisor extends WorkbenchAdvisor {
 					getString("_UI_OpenEditorError_label"),
 					exception.getMessage());
 				return false;
+			}
+			catch (Exception exception) {
+				MessageDialog.openError(
+						workbenchWindow.getShell(),
+						getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
+					return false;				
 			}
 		}
 		return true;

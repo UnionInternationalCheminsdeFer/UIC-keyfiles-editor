@@ -891,8 +891,16 @@ public class BarCodeKeyExchangeEditor
 			options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 			options.put(XMIResource.OPTION_SUPPRESS_XMI, Boolean.TRUE);
 			options.put(XMIResource.OPTION_SAVE_DOCTYPE, Boolean.FALSE);
-			resource.load(new FileInputStream(file), options);		
-			
+			try {
+			 resource.load(new FileInputStream(file), options);		
+			} catch (Exception exception) {
+				MessageDialog.openError(
+						null,
+						"XML parsing error",
+						exception.getMessage());
+				BarCodeKeyExchangeEditorPlugin.INSTANCE.log(exception);	
+				return;
+			}
 			resource.setURI(resourceURI);
 			
 			editingDomain.getResourceSet().getResources().add(resource);
@@ -1324,7 +1332,7 @@ public class BarCodeKeyExchangeEditor
 	protected void hideTabs() {
 		if (getPageCount() <= 1) {
 			setPageText(0, "");
-			if (getContainer() != null && getContainer() instanceof CTabFolder) {
+			if (getContainer() instanceof CTabFolder) {
 				Point point = getContainer().getSize();
 				Rectangle clientArea = getContainer().getClientArea();
 				getContainer().setSize(point.x,  2 * point.y - clientArea.height - clientArea.y);
